@@ -1,3 +1,4 @@
-class Comment < ActiveRecord::Base
-  opinio
+class Comment
+  include Mongoid::Document
+  #opinio
 end

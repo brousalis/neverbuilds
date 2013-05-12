@@ -1,10 +1,12 @@
 class User
   include Mongoid::Document
 
-
   field :password_salt, type: String
   field :password_hash, type: String
   field :username,      type: String
+  field :email,         type: String
+  field :account,       type: String
+  field :character,     type: String
 
   attr_accessor :password
   before_save :encrypt_password
@@ -14,7 +16,7 @@ class User
   validates_presence_of :username, :on => :create
   validates_uniqueness_of :username
 
-  #has_many :builds
+  has_many :builds
   #has_many :comments
 
   def authenticate(username, password)

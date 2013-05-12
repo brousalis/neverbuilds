@@ -35,6 +35,7 @@ GEM
       sass (~> 3.2)
     builder (3.0.4)
     daemons (1.1.8)
+    database_cleaner (0.9.1)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     eventmachine (0.12.10)
@@ -149,6 +150,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby
   bootstrap-sass (~> 2.3.1.0)
+  database_cleaner
   haml (>= 3.0.0)
   jquery-rails (~> 2.1)
   kaminari
