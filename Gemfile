@@ -12,11 +12,7 @@ gem 'kaminari'
 gem 'newrelic_rpm'
 
 group :development do
-  gem 'pg'
-end
-
-group :production do
-  gem 'mysql2'
+  gem 'mongoid'
 end
 
 group :assets do
@@ -27,4 +23,6 @@ end
 
 group :test do
   gem 'turn', '0.8.2', :require => false
+  gem 'rspec'
+  gem 'rspec-rails'
 end
