@@ -11,13 +11,7 @@ gem 'opinio'
 gem 'kaminari'
 gem 'newrelic_rpm'
 
-group :development do
-  gem 'pg'
-end
-
-group :production do
-  gem 'mysql2'
-end
+gem 'mongoid'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.6'
@@ -26,5 +20,9 @@ group :assets do
 end
 
 group :test do
+  gem 'factory_girl'
+  gem 'database_cleaner'
   gem 'turn', '0.8.2', :require => false
+  gem 'rspec'
+  gem 'rspec-rails'
 end

@@ -4,7 +4,7 @@ class BuildsController < ApplicationController
   before_filter :authorize, :only => [:create, :update, :new, :delete]
 
   def index
-    @builds   = Build.find(:all, :order => "created_at DESC")
+    @builds   = Build.where(:order => "created_at DESC").all
     @featured = Build.where(:type => "featured").limit(5)
   end 
 
