@@ -1,6 +1,11 @@
-class User < ActiveRecord::Base
-  attr_accessible :username, :email, :password, :password_confirmation, :account, :character
-  
+class User
+  include Mongoid::Document
+
+
+  field :password_salt, type: String
+  field :password_hash, type: String
+  field :username,      type: String
+
   attr_accessor :password
   before_save :encrypt_password
   
@@ -8,11 +13,9 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :username, :on => :create
   validates_uniqueness_of :username
-  #validates_uniqueness_of :email
-  #validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :on => :create, :message => "is invalid"  
 
-  has_many :builds
-  has_many :comments
+  #has_many :builds
+  #has_many :comments
 
   def authenticate(username, password)
     user = User.find_by_username(username)

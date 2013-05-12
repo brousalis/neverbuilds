@@ -11,9 +11,7 @@ gem 'opinio'
 gem 'kaminari'
 gem 'newrelic_rpm'
 
-group :development do
-  gem 'mongoid'
-end
+gem 'mongoid'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.6'
