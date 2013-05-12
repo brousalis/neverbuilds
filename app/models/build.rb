@@ -2,7 +2,7 @@ class Build
   include Mongoid::Document
 
   belongs_to :user
-  #has_many :comments, :dependent => :destroy
+  embeds_many :comments
 
   field :name,      type: String
   field :category,  type: String

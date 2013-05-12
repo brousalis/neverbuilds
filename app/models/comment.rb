@@ -1,4 +1,6 @@
 class Comment
   include Mongoid::Document
-  #opinio
+
+  belongs_to :user
+  embedded_in :build
 end
