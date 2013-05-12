@@ -1,8 +1,0 @@
-development:
-  adapter: postgresql
-  encoding: unicode
-  database: neverbuilds_dev
-  pool: 5
-  username: ego
-  password:
-
