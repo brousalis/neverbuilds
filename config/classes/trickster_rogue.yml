@@ -174,7 +174,7 @@ powers:
     rank_2: "Damage: +10%"
     rank_3: "Damage: +10%"
     level: 35
-  skillful_inflitrator:
+  skillful_infiltrator:
     type: skill
     paragon: "Inflitrator"
     image: default.png

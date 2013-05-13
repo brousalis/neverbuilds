@@ -2,14 +2,14 @@ nw.ui = function() {
   var init = function() { 
     // toggler
     $('.toggle').on('click', function() {
-      $('[class='+$(this).attr('rel')+']').toggle()
-      $(this).toggleClass('open')
+      $('[class='+$(this).attr('rel')+']').toggle();
+      $(this).toggleClass('open');
     })  
 
     // input stuff  
     $('input').not(':input[type=submit]')
-              .input_focus()
-    $('textarea').autosize()
+              .input_focus();
+    $('textarea').autosize();
 
     // modal registration
     registration();
@@ -25,7 +25,7 @@ nw.ui = function() {
     });
     $('.nav .password').keypress(function(e) {
       if(e.which == 13) 
-        login()
+        login();
     }); 
   };
 
@@ -54,7 +54,7 @@ nw.ui = function() {
     // more ux omg
     $('#register').on('show', function() {
       setTimeout(function() {
-        $('#user_username').focus()
+        $('#user_username').focus();
       }, 500);
     });
      
@@ -63,37 +63,37 @@ nw.ui = function() {
 
     // omg ux
     $('#user_password_again').keypress(function(e) {
-      if(e.which == 13) $('#new_user').submit()
+      if(e.which == 13) $('#new_user').submit();
     });
     
     // validate and submit
     $("#new_user").submit(function(e){
       if($("#user_username").val() == "") {
-        $('#new_user .error').html('Username can\'t be blank')
-        $('input[id*="username"]').addClass('error')
-        $('#new_user .errors').show()
+        $('#new_user .error').html('Username can\'t be blank');
+        $('input[id*="username"]').addClass('error');
+        $('#new_user .errors').show();
         return false
       } else {
-        $('input[id*="username"]').removeClass('error')
+        $('input[id*="username"]').removeClass('error');
       }
 
       if($("#user_password").val() != $("#user_password_again").val() ||
           $("#user_password").val() == "") {
-        $('#new_user .error').html('Passwords do not match')
-        $('input[id*="password"]').addClass('error')
-        $('#new_user .errors').show()
+        $('#new_user .error').html('Passwords do not match');
+        $('input[id*="password"]').addClass('error');
+        $('#new_user .errors').show();
         return false
       } else {
-        $('input[id*="password"]').removeClass('error')
+        $('input[id*="password"]').removeClass('error');
       }
 
       if($("#user_email").val() != "" && !validate_email($("#user_email").val())) {
-        $('#new_user .error').html('Invalid email address')
-        $('input[id*="email"]').addClass('error')
-        $('#new_user .errors').show() 
+        $('#new_user .error').html('Invalid email address');
+        $('input[id*="email"]').addClass('error');
+        $('#new_user .errors').show() ;
         return false
       } else {
-        $('input[id*="email"]').removeClass('error')
+        $('input[id*="email"]').removeClass('error');
       }
 
       $.ajax({
@@ -105,10 +105,14 @@ nw.ui = function() {
         url: "/users",
         data: $(this).serialize(),
         success: function(json){
-          if(json.location) window.location = json.location
-          $('#new_user input').removeClass('error')
-          $('#new_user .errors').fadeIn()
-          $('#new_user .error').html(json.errors)
+          if(json.status == "success") {
+            $('#new_user .errors').hide();
+          } else {
+            if(json.location) window.location = json.location
+            $('#new_user input').removeClass('error');
+            $('#new_user .errors').fadeIn();
+            $('#new_user .error').html(json.errors);
+          }
         },
         dataType: "json"
       });

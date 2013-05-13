@@ -10,41 +10,53 @@
         = character_class.titleize
 
 .hud
-  .at_wills
-    - at_wills(character_class).each do |will|
-      %a.button{:href => '#'}= will
+  .selector{:"data-button" => "encounter"}
+    - encounters(character_class).each do |power|
+      %a.button{:href => '#'}
+        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
+  .selector{:"data-button" => "daily"}
+    - dailys(character_class).each do |power|
+      %a.button{:href => '#'}
+        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
+  .selector{:"data-button" => "skill"}
+    - skills(character_class).each do |power|
+      %a.button{:href => '#'}
+        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
+  .selector{:"data-button" => "at_will"}
+    - at_wills(character_class).each do |power|
+      %a.button{:href => '#'}
+        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
   %ul#hud
-    %li
+    %li.at_wills
       %span.type at wills
-      %a.button.at_will{:href => '#'}
+      %a.button.at_will{:href => '#', :rel => 'at_will'}
         %span.change
         %span.image
-      %a.button.at_will{:href => '#'}
+      %a.button.at_will{:href => '#', :rel => 'at_will'}
         %span.change
         %span.image
-    %li
+    %li.encounters
       %span.type encounters
-      %a.button.encounter{:href => '#'}
+      %a.button.encounter{:href => '#', :rel => 'encounter'}
         %span.change
         %span.image
-      %a.button.encounter{:href => '#'}
+      %a.button.encounter{:href => '#', :rel => 'encounter'}
         %span.change
         %span.image
-      %a.button.encounter{:href => '#'}
+      %a.button.encounter{:href => '#', :rel => 'encounter'}
         %span.change
         %span.image
-    %li
+    %li.dailys
       %span.type dailys
-      %a.button.daily{:href => '#'}
+      %a.button.daily{:href => '#', :rel => 'daily'}
         %span.image
-      %a.button.daily{:href => '#'}
+      %a.button.daily{:href => '#', :rel => 'daily'}
         %span.image
-    %li
+    %li.skills
       %span.type class features
-      %a.button.skill{:href => '#'}
+      %a.button.skill{:href => '#', :rel => 'skill'}
         %span.change
         %span.image
-      %a.button.skill{:href => '#'}
+      %a.button.skill{:href => '#', :rel => 'skill'}
         %span.change
         %span.image
-
