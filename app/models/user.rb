@@ -20,7 +20,7 @@ class User
   #has_many :comments
 
   def authenticate(username, password)
-    user = User.find_by_username(username)
+    user = User.find_by(username: username)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
     else
