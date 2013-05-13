@@ -10,53 +10,73 @@
         = character_class.titleize
 
 .hud
-  .selector{:"data-button" => "encounter"}
-    - encounters(character_class).each do |power|
-      %a.button{:href => '#'}
-        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
-  .selector{:"data-button" => "daily"}
-    - dailys(character_class).each do |power|
-      %a.button{:href => '#'}
-        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
-  .selector{:"data-button" => "skill"}
-    - skills(character_class).each do |power|
-      %a.button{:href => '#'}
-        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
-  .selector{:"data-button" => "at_will"}
-    - at_wills(character_class).each do |power|
-      %a.button{:href => '#'}
-        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
   %ul#hud
     %li.at_wills
       %span.type at wills
       %a.button.at_will{:href => '#', :rel => 'at_will'}
         %span.change
         %span.image
+        %input{:name => 'at_will1', :type => 'hidden'}
       %a.button.at_will{:href => '#', :rel => 'at_will'}
         %span.change
         %span.image
+        %input{:name => 'at_will2', :type => 'hidden'}
+
     %li.encounters
       %span.type encounters
       %a.button.encounter{:href => '#', :rel => 'encounter'}
         %span.change
         %span.image
+        %input{:name => 'encounter1', :type => 'hidden'}
       %a.button.encounter{:href => '#', :rel => 'encounter'}
         %span.change
         %span.image
+        %input{:name => 'encounter2', :type => 'hidden'}
       %a.button.encounter{:href => '#', :rel => 'encounter'}
         %span.change
         %span.image
+        %input{:name => 'encounter3', :type => 'hidden'}
+
     %li.dailys
       %span.type dailys
       %a.button.daily{:href => '#', :rel => 'daily'}
         %span.image
+        %input{:name => 'daily1', :type => 'hidden'}
       %a.button.daily{:href => '#', :rel => 'daily'}
         %span.image
+        %input{:name => 'daily2', :type => 'hidden'}
+
     %li.skills
       %span.type class features
       %a.button.skill{:href => '#', :rel => 'skill'}
         %span.change
         %span.image
+        %input{:name => 'skill1', :type => 'hidden'}
       %a.button.skill{:href => '#', :rel => 'skill'}
         %span.change
         %span.image
+        %input{:name => 'skill2', :type => 'hidden'}
+
+  .selector{:"data-button" => "at_will"}
+    - at_wills(character_class).each do |power|
+      %a.button{:href => '#', :rel => "#{power}"}
+        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"} 
+
+  .selector{:"data-button" => "encounter"}
+    - encounters(character_class).each do |power|
+      %a.button{:href => '#', :rel => "#{power}", 
+                              :"data-toggle" => "tooltip", 
+                              :"data-html" => "true", 
+                              :title => "<span class='name'>a</span><span class='range'>b</span><span class='content'>c</span>"}
+        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
+
+  .selector{:"data-button" => "daily"}
+    - dailys(character_class).each do |power|
+      %a.button{:href => '#', :rel => "#{power}"}
+        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
+
+  .selector{:"data-button" => "skill"}
+    - skills(character_class).each do |power|
+      %a.button{:href => '#', :rel => "#{power}"}
+        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
+

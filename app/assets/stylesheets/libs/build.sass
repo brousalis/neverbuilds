@@ -150,6 +150,8 @@ $dailys: #fbcf2f
               background-size: 100% !important
             &:hover
               +opacity(100)
+            &.hidden
+              display: none
         &.at_wills
           .button.active
             border: 1px solid $at_wills
@@ -179,4 +181,10 @@ $dailys: #fbcf2f
             border-top: 1px solid #000
           .popover
             border: 1px solid $skills
- 
+
+  .tooltip
+    &.in
+      +opacity(100)
+      
+    .tooltip-inner
+      background: #000
