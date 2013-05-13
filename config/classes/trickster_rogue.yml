@@ -139,7 +139,7 @@ powers:
     rank_2: "Buff Duration: +1s"
     rank_3: "Buff Duration: +1s"
     level: 30
-  inflitrators_action:
+  infiltrators_action:
     type: skill
     image: default.png
     paragon: "Inflitrator"

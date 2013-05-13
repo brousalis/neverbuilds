@@ -1,6 +1,6 @@
 nw.template = function() {
   var init = function() {  
-    $("#hud .button")
+    $('#hud .button')
       .popover({
         placement: 'top',
         html: 'true',
@@ -14,7 +14,11 @@ nw.template = function() {
         e.preventDefault()
         $('.button').not(this).popover('hide').removeClass('active');
         $(this).toggleClass('active');
-    })  
+    });  
+    $('body').on('click', '.popover .button', function(e) {
+      var style = $(this).find('.image').css('background')
+      $(this).parents().find('.active .image').css('background', style);
+    });
   };
 
   return {
