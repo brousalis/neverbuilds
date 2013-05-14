@@ -7,7 +7,6 @@ powers:
   cloud_of_steel:
     type: at_will
     range: "60' range"
-    image: default.png
     desc: "Toss a barrage of blades at your target, dealing medium damage. The longer you flurry a single target, the more damage Cloud of Steel will inflict."
     rank_2: "Damage: +10%"
     rank_3: "Damage: +10%" 
@@ -15,7 +14,6 @@ powers:
   sly_flourish:
     type: at_will
     range: "2' cylinder"
-    image: default.png
     desc: "A distracting flourish of your blades deals damage to your target."
     rank_2: "Damage: +10%" 
     rank_3: "Damage: +10%" 
@@ -24,7 +22,6 @@ powers:
     type: encounter
     range: "3' cylinder"
     cooldown: 10
-    image: default.png
     desc: "Snap into the air, catching your opponent with a crushing blow to their head. The impact causes your opponent to be Dazed for several seconds." 
     bonus: "During Stealth, activation time reduced by 50%."
     rank_2: "Damage: +10%" 
@@ -33,14 +30,12 @@ powers:
   bloodbath:
     type: daily
     range: "30' burst"
-    image: default.png
     desc: "Flash around the battlefield, jumping from target to target. As you pass through an enemy, they are Slowed and are open to Combat Advantage."
     rank_2: "Damage: +10%" 
     rank_3: "Damage: +10%" 
     level: 0
   sneak_attack:
     type: skill
-    image: default.png
     desc: "Increase your Run Speed by 10% while Stealthed."
     rank_2: "Damage: +10%" 
     rank_3: "Damage: +10%" 
@@ -49,7 +44,6 @@ powers:
     type: encounter
     range: "60' range"
     cooldown: 14
-    image: default.png
     desc: "Dash behind your enemy and deliver a painful stab, Slwoing your enemy for a short duration."
     bonus: "During Stealth, range increased to 80' and allow you to teleport to friendly targets."
     rank_2: "Damage: +10%" 
@@ -59,7 +53,6 @@ powers:
     type: encounter
     range: "14' range', 3' cylinder"
     cooldown: 20
-    image: default.png
     desc: "Focus your strength into one furious attack, inflicting massive damage on your enemy."  
     bonus: "During Stealth, deals an additional 50% damage." 
     rank_2: "Damage: +10%" 
@@ -67,14 +60,12 @@ powers:
     level: 5
   lurkers_assault:
     type: daily
-    image: default.png
     desc: "Lurk through the shadows, adding +20% damage to your attacks and your Stealth meter regenerates very quickly in this state, allowing you to remain Stealthed for much longer."
     rank_2: "Damage: +20%" 
     rank_3: "Damage: +20%"  
     level: 10
   whirlwind_of_blades:
     type: daily
-    image: default.png
     range: "30' burst"
     desc: "Whip your daggers out around you, dealing minor damage but gaining Power for each enemy you hit."
     rank_2: "Damage: +10%"  
@@ -82,7 +73,6 @@ powers:
     level: 10
   bait_and_switch:
     type: encounter
-    image: default.png
     range: "15' blast"
     cooldown: 25
     desc: "Jump backwards, dropping a decoy in your place. Any enemies that are near the decoy will attack it instead of you. Gain Action Points when the decoy is hit by an enemy."
@@ -92,21 +82,18 @@ powers:
     level: 15
   first_strike:
     type: skill
-    image: default.png
     desc: "Your first attack in combat deals 5% additional damage"
     rank_2: "Damage: +5%"  
     rank_3: "Damage: +5%"  
     level: 15
   tenacious_concealment:
     type: skill
-    image: default.png
     desc: "Reduces Stealth loss from incoming damage by 30%"
     rank_2: "Stealth Loss: -30%"
     rank_3: "Stealth Loss: -30%"
     level: 15
   duelists_flurry:
     type: at_will
-    image: default.png
     range: "2' cylinder"
     desc: "Strike with two slashes followed by a flurry of attacks. Attacks from the flurry each have a chance to add a Bleed effect which can be stacked up to 10 times."
     rank_2: "Damage: +10%"  
@@ -114,7 +101,6 @@ powers:
     level: 20
   blitz:
     type: "encounter"
-    image: default.png
     range: "40' range, 90' cone"
     cooldown: 12
     desc: "Throw a fan of blades out directly in front of you."
@@ -124,7 +110,6 @@ powers:
     level: 20
   tactics:
     type: skill
-    image: default.png
     desc: "Increases your Action Point Gain by 5%"
     rank_2: "Action Point Gain: +5%"
     rank_3: "Action Point Gain: +5%"
@@ -132,7 +117,6 @@ powers:
   impossible_to_catch:
     paragon: "Inflitrator"
     type: encounter
-    image: default.png
     cooldown: 18
     desc: "You break free from most control effects, and for several seconds you Deflect all incoming attacks and are immune to further control effects."
     bonus: "You become completely untouchable to your enemies, dodging their attacks and receiving no damage."
@@ -141,7 +125,6 @@ powers:
     level: 30
   infiltrators_action:
     type: skill
-    image: default.png
     paragon: "Inflitrator"
     desc: "Every time you do a daily, gain Combat Advantage for 5 secs."
     rank_2: "Duration: +5"
@@ -149,7 +132,6 @@ powers:
     level: 30
   path_of_the_blade:
     type: encounter
-    image: default.png
     cooldown: 25
     desc: "Summon an upheaval of powerful blades around you, dealing damage to nearby enemies for the next several seconds."
     bonus: "Pulses twice as fast for half of the duration."
@@ -158,7 +140,6 @@ powers:
     level: 30
   impact_shot:
     type: encounter
-    image: default.png
     range: "40' range"
     desc: "Attack your opponent from a medium range, Pushing them slightly. This skill has 3 encounter charges."
     bonus: "Briefly Stuns the target, and cost no charges."
@@ -168,7 +149,6 @@ powers:
   gloaming_cut:
     type: at_will
     paragon: "Inflitrator"
-    image: default.png
     range: "20' range, 2' cylinder"
     desc: "Dash forward with a shadowy cross slash that grants 25% of your Stealth bar if you kill a target with it."
     rank_2: "Damage: +10%"
@@ -177,14 +157,12 @@ powers:
   skillful_infiltrator:
     type: skill
     paragon: "Inflitrator"
-    image: default.png
     desc: "Increase your base run speed by 5%, and your Deflect Chance and Crit Chane by 1%."
     rank_2: "Run Speed: +5%, Crit Chance: +1%, Dodge Chance: +1%"
     rank_3: "Run Speed: +5%, Crit Chance: +1%, Dodge Chance: +1%"
     level: 40
   courage_breaker:
     type: daily
-    image: default.png
     range: "45' range"
     desc: "Shatter your enemy's courage, slowing their movement speed and lowering their attack damage by 30%. This effect goes through control immunities."
     rank_2: "Damage Reduction: +30%"
@@ -192,7 +170,6 @@ powers:
     level: 40
   wicked_reminder:
     type: encounter
-    image: default.png
     range: "3' cylinder"
     cooldown: 4
     desc: "Pierce your enemy's armor, cracking it for a period of time, lowering your target's Damage Resistance. This effect can stack up for 5 times."
@@ -202,7 +179,6 @@ powers:
     level: 45
   shadow_strike:
     type: encounter
-    image: default.png
     range: "40' range"
     cooldown: 16
     desc: "Strike your target from a medium range and fill your Stealth bar."
@@ -213,13 +189,11 @@ powers:
   invisible_infiltrator:
     type: skill
     paragon: "Inflitrator"
-    image: default.png
     desc: "After using a daily, refills your Stealth meter and grants a 5% damage bonus for 5 seconds."
     level: 50
   shocking_execution:
     type: daily
     paragon: "Inflitrator"
-    image: default.png
     range: "30' range"
     desc: "Leap up and strike with a vicious attack that ignores your targets' defense and deals additional damage based an how much health they are missing."
     rank_2:
@@ -227,7 +201,6 @@ powers:
     level: 50
   smoke_bomb:
     type: encounter
-    image: default.png
     cooldown: 18
     desc: "Drop a smoke bomb in front of you, Dazing opponents while inside of it."
     bonus: "Now adds a Slow effect."
@@ -240,178 +213,139 @@ feats:
       action_advantage:
         points: 5 
         desc: "2/4/6/8/10% additional Action Point for dealing Combat Advantage damage."
-        image: default.png
       weapon_mastery:
         points: 3 
         desc: "1/2/3% greater chance to land a critical hit."
-        image: default.png
       toughness:
         points: 3 
         desc: "Increase your Maximum Hit Points by 3/6/9%."
-        image: default.png
     2:
       swift_footeworkd:
         points: 5 
         desc: "Your Stamina regenerates 2/4/6/8/10% faster."
-        image: default.png
       battlewise:
         points: 3 
         desc: "You create 2/4/6% less threat."
-        image: default.png
       cunning_ambusher:
         points: 3 
         desc: "You deal 2/4/6% more damage for 6 seconds after leaving Stealth"
-        image: default.png
     3:
       endless_assault:
         points: 3 
         desc: "Your encounters deal 2/4/6% more damage."
-        image: default.png
       twilight_adept:
         points: 5 
         desc: "Restores 2/4/6/8/10% of your Stealth Meter when you Dodge Roll."
-        image: default.png
       lucky_skirmisher:
         points: 3 
         desc: "Increase your chance to Deflect by 1/2/3%."
-        image: default.png
     4:
       scoundrel_training:
         points: 3 
         desc: "Your At-Wills deal 3/6/9% more damage to foes not targeting you."
-        image: default.png
       disciple_of_strength:
         points: 3 
         desc: "Increase the amount of bonus damage Strength gives you by 5/10/15%."
-        image: default.png
       improved_cunning_sneak:
         points: 5 
         desc: "Your Stealth lasts 4/8/12/16/20% longer."
-        image: default.png
   paragon:
     saboteur:
       1:
         speed_swindle:
           points: 5 
           desc: "When you crit a foe it loses 2/4/6/8/10% Run Speed, you gain 2/4/6/8/10%."
-          image: default.png
         cunning_stalker:
           points: 5 
           desc: "While Stealthed, you build 4/8/12/16/20% more Action Points."
-          image: default.png
       2:
         nimble_dodge:
           points: 5 
           desc: "Your dodge costs 2/4/6/8/10% less Stamina. This reduction is doubled while Stealthed."
-          image: default.png
         sneaky_stabber:
           points: 5 
           desc: "Your Gloaming Cut now grants 2/4/6/8/10% of your Stealth meter."
-          image: default.png
       3:
         baited_action:
           points: 5 
           desc: "Your Bait and Switch Dummy has 2/4/6/8/10% more health and reflects 1/2/3/4/5% of damage delt to it."
-          image: default.png
         expert_sneak:
           points: 5 
           desc: "While Stealthed, you gain 2/4/6/8/10% Run speed and your At Will Powers reduce your target’s damage by 1/2/3/4/5%"
-          image: default.png
       4:
         sneak_of_shadows:
           points: 5 
           desc: "Deal 2/4/6/8/10% more damage while Stealthed."
-          image: default.png
         unerring_ambush:
           points: 5 
           desc: "Strikes with Deft Strike, Dazing Strike and Blitz deal 4/8/12/16/20% more damage from Stealth."
-          image: default.png
       5:
         ruthless_efficiency:
           points: 1 
           desc: "When you land a killing blow, your Armor Pen is increased by 30% for 6 seconds."
-          image: default.png
     scoundrel:
       1:
         berserk_vitality:
           points: 5 
           desc: "Gain .5/1/1.5/2/2.5% of your Max Hit Points as Temporary Hit Points when you deal Combat Advantage damage to a foe. This can only occur once every 20 seconds."
-          image: default.png
         underhanded_tactics:
           points: 5 
           desc: "Increase the effectiveness of Combat Advantage for you by 4/8/12/16/20%"
-          image: default.png
       2:
         press_the_advantage:
           points: 5 
           desc: "Your Impossible to Catch now also improves your Power by 2/4/6/8/10%"
-          image: default.png
         nimble_blade:
           points: 5 
           desc: "35% chance to deal an additional 4/8/12/16/20% damage on a non critical strike."
-          image: default.png
       3:
         mocking_knave:
           points: 5 
           desc: "Sly Flourish and Cloud of Steel deal 2/4/6/8/10% more damage. Additionally, Cloud of Steel’s damage bonus per stack is increased by .5/1/1.5/2/2.5%."
-          image: default.png
         catspaw_style:
           points: 5 
           desc: "Your Blitz and Dazing Strike reduce the target’s defenses by 2/4/6/8/10%. This effect can not stack."
-          image: default.png
       4:
         action_rush:
           points: 5 
           desc: "Your Encounter Powers have a 15% chance to grant 3/6/9/12/15% of your Action Point"
-          image: default.png
         brutal_wound:
           points: 5 
           desc: "Courage Breaker and Whirlwind of Blades also deal 50/100/150/200/250% of your weapon damage over 5 seconds."
-          image: default.png
       5:
         whirlwind_sneak_attack:
           points: 1 
           desc: "For 10 seconds after Stealth ends, the first time you hit with an encounter power it will deal 15% additional damage."
-          image: default.png
     executioner:
       1:
         dazzling_blades:
           points: 5 
           desc: "Your At-Will powers have a 3/6/9/12/15% chance to reduce the cooldown on recharging Encounter powers by 1 second."
-          image: default.png
         thrill_of_the_kill:
           points: 5 
           desc: "When you land a killing blow, gain .2/.4/.6/.8/1% of your Action Points."
-          image: default.png
       2:
         crueltys_reward:
           points: 5 
           desc: "When you critically strike a foe you generate 2/4/6/8/10% less threat for 6 seconds."
-          image: default.png
         devastating_shroud:
           points: 5 
           desc: "Increase your critical strike chance and severity by 2/4/6/8/10% for 6 seconds after using Shocking Execution."
-          image: default.png
       3:
         brutal_backstab:
           points: 5 
           desc: "While Stealthed you critical with 5/10/15/20/25% more severity."
-          image: default.png
         critical_teamwork:
           points: 5 
           desc: "You and your nearby allies gain a 1/2/3/4/5% chance to crit."
-          image: default.png
       4:
         deadly_momentum:
           points: 5 
           desc: "Duelist’s Flurry has a 5/10/15/20/25% chance to apply ‘Deadly Momentum’ Deadly Momentum; Increases your critical severity by 5% per stack."
-          image: default.png
         sharpened_steel:
           points: 5 
           desc: "Blitz and Wicked Reminder have 2/4/6/8/10% more chance to crit."
-          image: default.png
       5:
         overrun_critical:
           points: 1 
           desc: "When you land a critical hit, one of your next attacks strikes with 30% of your crit severity."
-          image: default.png

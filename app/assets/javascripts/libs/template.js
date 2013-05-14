@@ -2,8 +2,6 @@ nw.template = function() {
   var init = function() {  
     // the almighty hack of all hacks
     $('body').tooltip({
-      html: true,
-      animation: false,
       selector: '[data-toggle=tooltip]'
     });
 
@@ -15,9 +13,9 @@ nw.template = function() {
     $('#hud .button')
       .popover({
         placement: 'top',
-        html: 'true',
-        animation: 'false',
-        show: 'true',
+        html: true,
+        animation: false,
+        show: true,
         content: function() {
           return $('[data-button="'+$(this).attr('rel')+'"]').html();
         }
