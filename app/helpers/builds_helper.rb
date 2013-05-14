@@ -20,7 +20,6 @@ module BuildsHelper
   end 
 
   def power_button(power, character_class)
-
     tooltip = power.keys.collect do |key| 
       content_tag(:span, (key == "name" ? power[key].titleize : power[key]), :class => key)
     end
