@@ -59,24 +59,17 @@
 
   .selector{:"data-button" => "at_will"}
     - at_wills(character_class).each do |power|
-      %a.button{:href => '#', :rel => "#{power}"}
-        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"} 
+      = power_button(power, character_class)
 
   .selector{:"data-button" => "encounter"}
     - encounters(character_class).each do |power|
-      %a.button{:href => '#', :rel => "#{power}", 
-                              :"data-toggle" => "tooltip", 
-                              :"data-html" => "true", 
-                              :title => "<span class='name'>a</span><span class='range'>b</span><span class='content'>c</span>"}
-        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
+      = power_button(power, character_class)
 
   .selector{:"data-button" => "daily"}
     - dailys(character_class).each do |power|
-      %a.button{:href => '#', :rel => "#{power}"}
-        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
+      = power_button(power, character_class)
 
   .selector{:"data-button" => "skill"}
     - skills(character_class).each do |power|
-      %a.button{:href => '#', :rel => "#{power}"}
-        .image{:style => "background:url('/assets/powers/#{character_class}/#{power}.png')"}
+      = power_button(power, character_class)
 
