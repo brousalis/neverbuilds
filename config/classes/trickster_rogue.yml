@@ -50,7 +50,7 @@ powers:
     type: encounter
     range: "60' range"
     cooldown: 14
-    desc: "Dash behind your enemy and deliver a painful stab, Slwoing your enemy for a short duration."
+    desc: "Dash behind your enemy and deliver a painful stab, Slowing your enemy for a short duration."
     bonus: "During Stealth, range increased to 80' and allow you to teleport to friendly targets."
     rank_2: "Damage: +10%" 
     rank_3: "Damage: +10%" 
@@ -58,7 +58,7 @@ powers:
   lashing_blade:
     name: Lashing Blade
     type: encounter
-    range: "14' range', 3' cylinder"
+    range: "14' range, 3' cylinder"
     cooldown: 20
     desc: "Focus your strength into one furious attack, inflicting massive damage on your enemy."  
     bonus: "During Stealth, deals an additional 50% damage." 
