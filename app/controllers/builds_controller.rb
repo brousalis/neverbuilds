@@ -19,15 +19,27 @@ class BuildsController < ApplicationController
                      "redirect" => build_path(@build)}
   end
 
+  def show
+    @build = Build.find(params[:id])
+  end
+
+  def new
+    @build = Build.new((params[:build] || {}).merge(
+      :character_class => session[:class]
+      # TODO: race
+    ))
+  end
+
   def create
-    @build = Build.new(params[:guide])
+    @build = Build.new(params[:build])
     @build.user = current_user
     if @build.save
       render :json => {"status" => "success", 
                        "redirect" => "/builds/#{@build.id}"}
     else
       render :json => {"status" => "failure", 
-                       "errors" => @build.errors.full_messages}
+                       "errors" => @build.errors.full_messages},
+             :status => :unprocessable_entity
     end
   end 
 

@@ -1,68 +1,71 @@
 .builds
-  .row
-    .span12.template
-      - if session[:class]
-        = render :partial => "template", :locals => {:character_class => session[:class], :race => session[:race]}
-  .row
-    .span3.sidebar
-      %ul.nav
-        %li.meta
-          .left Date
-          .right
-            = format_date(Date.today)
-        %li.meta
-          .left Type
-          .right
-            %a.filter{:href => "#"} PVE
-            %a.filter{:href => "#"} PVP 
-        %li
-          %a.btn.preview{:href => "#"} Preview
-        %li
-          %a.btn.submit{:href => "#"} Submit
-      %ul.nav.cheats
-        %li.intro
-          The editor uses <strong>Markdown</strong>, a text-to-HTML tool. Here is a cheat sheet to help you.
-        %li 
-          .element header
-          .cheat #Text
-        %li 
-          .element list
-          .cheat * list item
-        %li 
-          .element blockquote
-          .cheat > quote text
-        %li 
-          .element bold
-          .cheat **bold words**
-        %li 
-          .element italics
-          .cheat *italic words* 
-        %li 
-          .element links
-          .cheat [text](http://...com)
-        %li 
-          .element image
-          .cheat ![text](http://..png)
-        %li 
-          .element horizontal line
-          .cheat *** 
-    .span9.new
-      .header
-        %input.name{:value => "Name of build"}
-      .video
-        %a.btn.remove-video{:href => "#"} 
-          %i.icon.icon-remove
-        %a.btn.add-video{:href => "#"} 
-          %i.icon.icon-ok
-        %input.video-url{:value => "url of youtube video"}
-      %iframe.youtube{:style => "display: none;", :allowfullscreen => "", :frameborder => "0", :height => "500", :src => "", :width => "100%"}
-      .body
-        = preserve do
-          %textarea{:autofocus => ""}  
-            \#Example Header
-            Here's some text, **some bold**, *some italic*, and a [link](http://test.com).
-            Press 'Preview' on the right to see what this looks like.
-            * List item 1
-            * List item 2
+  = form_for @build, :remote => true do |f|
+    .row
+      .span12.template
+        - if session[:class]
+          = render :partial => "template", :locals => {:character_class => session[:class], :race => session[:race], :f => f}
+    .row
+      .span3.sidebar
+        %ul.nav
+          %li.meta
+            .left Date
+            .right
+              = format_date(Date.today)
+          %li.meta
+            .left Type
+            .right
+              %fieldset.category
+                = f.hidden_field :category
+                %a.filter{:href => "#"} PVE
+                %a.filter{:href => "#"} PVP 
+          %li
+            %a.btn.preview{:href => "#"} Preview
+          %li
+            %a.btn.submit{:href => "#"} Submit
+        %ul.nav.cheats
+          %li.intro
+            The editor uses <strong>Markdown</strong>, a text-to-HTML tool. Here is a cheat sheet to help you.
+          %li 
+            .element header
+            .cheat #Text
+          %li 
+            .element list
+            .cheat * list item
+          %li 
+            .element blockquote
+            .cheat > quote text
+          %li 
+            .element bold
+            .cheat **bold words**
+          %li 
+            .element italics
+            .cheat *italic words* 
+          %li 
+            .element links
+            .cheat [text](http://...com)
+          %li 
+            .element image
+            .cheat ![text](http://..png)
+          %li 
+            .element horizontal line
+            .cheat *** 
+      .span9.new
+        .header
+          = f.text_field :name
+        .video
+          %a.btn.remove-video{:href => "#"} 
+            %i.icon.icon-remove
+          %a.btn.add-video{:href => "#"} 
+            %i.icon.icon-ok
+          %input.video-url{:value => "url of youtube video"}
+        %iframe.youtube{:style => "display: none;", :allowfullscreen => "", :frameborder => "0", :height => "500", :src => "", :width => "100%"}
+        .body
+          = preserve do
+            %textarea{:autofocus => ""}  
+              \#Example Header
+              Here's some text, **some bold**, *some italic*, and a [link](http://test.com).
+              Press 'Preview' on the right to see what this looks like.
+              * List item 1
+              * List item 2
 
 = render :partial => "picker" unless session[:class]

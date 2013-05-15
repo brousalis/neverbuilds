@@ -4,8 +4,20 @@ nw.template = function() {
     $('body').tooltip({
       selector: '[data-toggle=tooltip]'
     });
+    
+    // should move somewhere else
+    $('.submit').click(save_build);
+
+    $('fieldset.category a').click(function() {
+      $('#build_category').val(this.innerText);
+    })
+    // end should move somewhere else
 
     handle_hud();
+  };
+
+  var save_build = function() {
+    $('form').submit();
   };
 
   var handle_hud = function() {

@@ -8,54 +8,57 @@
       %span
         %i.class-image{:class => "#{character_class}"}
         = character_class.titleize
+      %fieldset
+        = f.hidden_field :character_class
 
 .hud
-  %ul#hud
-    %li.at_wills
-      %span.type at wills
-      %a.button.at_will{:href => '#', :rel => 'at_will'}
-        %span.change
-        %span.image
-        %input{:name => 'at_will1', :type => 'hidden'}
-      %a.button.at_will{:href => '#', :rel => 'at_will'}
-        %span.change
-        %span.image
-        %input{:name => 'at_will2', :type => 'hidden'}
+  = f.fields_for :hud do |hud|
+    %ul#hud
+      %li.at_wills
+        %span.type at wills
+        %a.button.at_will{:href => '#', :rel => 'at_will'}
+          %span.change
+          %span.image
+          = hud.hidden_field 'at_will1'
+        %a.button.at_will{:href => '#', :rel => 'at_will'}
+          %span.change
+          %span.image
+          = hud.hidden_field 'at_will2'
 
-    %li.encounters
-      %span.type encounters
-      %a.button.encounter{:href => '#', :rel => 'encounter'}
-        %span.change
-        %span.image
-        %input{:name => 'encounter1', :type => 'hidden'}
-      %a.button.encounter{:href => '#', :rel => 'encounter'}
-        %span.change
-        %span.image
-        %input{:name => 'encounter2', :type => 'hidden'}
-      %a.button.encounter{:href => '#', :rel => 'encounter'}
-        %span.change
-        %span.image
-        %input{:name => 'encounter3', :type => 'hidden'}
+      %li.encounters
+        %span.type encounters
+        %a.button.encounter{:href => '#', :rel => 'encounter'}
+          %span.change
+          %span.image
+          = hud.hidden_field 'encounter1'
+        %a.button.encounter{:href => '#', :rel => 'encounter'}
+          %span.change
+          %span.image
+          = hud.hidden_field 'encounter2'
+        %a.button.encounter{:href => '#', :rel => 'encounter'}
+          %span.change
+          %span.image
+          = hud.hidden_field 'encounter3'
 
-    %li.dailys
-      %span.type dailys
-      %a.button.daily{:href => '#', :rel => 'daily'}
-        %span.image
-        %input{:name => 'daily1', :type => 'hidden'}
-      %a.button.daily{:href => '#', :rel => 'daily'}
-        %span.image
-        %input{:name => 'daily2', :type => 'hidden'}
+      %li.dailys
+        %span.type dailys
+        %a.button.daily{:href => '#', :rel => 'daily'}
+          %span.image
+          = hud.hidden_field 'daily1'
+        %a.button.daily{:href => '#', :rel => 'daily'}
+          %span.image
+          = hud.hidden_field 'daily2'
 
-    %li.skills
-      %span.type class features
-      %a.button.skill{:href => '#', :rel => 'skill'}
-        %span.change
-        %span.image
-        %input{:name => 'skill1', :type => 'hidden'}
-      %a.button.skill{:href => '#', :rel => 'skill'}
-        %span.change
-        %span.image
-        %input{:name => 'skill2', :type => 'hidden'}
+      %li.skills
+        %span.type class features
+        %a.button.skill{:href => '#', :rel => 'skill'}
+          %span.change
+          %span.image
+          = hud.hidden_field 'skill1'
+        %a.button.skill{:href => '#', :rel => 'skill'}
+          %span.change
+          %span.image
+          = hud.hidden_field 'skill2'
 
   .selector{:"data-button" => "at_will"}
     - at_wills(character_class).each do |power|
