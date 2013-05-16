@@ -1,3 +1,4 @@
+bonus: Stealthed
 ability_score:
   primary: dexterity
   secondary:
@@ -160,6 +161,7 @@ powers:
     name: Impact Shot
     type: encounter
     range: "40' range"
+    cooldown: 0
     desc: "Attack your opponent from a medium range, Pushing them slightly. This skill has 3 encounter charges."
     bonus: "Briefly Stuns the target, and cost no charges."
     rank_2: "Damage: +10%"

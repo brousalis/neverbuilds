@@ -19,24 +19,35 @@ module BuildsHelper
     powers("skill", character_class)
   end 
 
+  def bonus(character_class)
+    class_config(character_class)["bonus"]
+  end
+
   def power_button(power, character_class)
     tooltip = power.keys.collect do |key| 
       content = case key
-                  when "name"
+                  when "name", "type"
                     power[key].titleize
                   when "cooldown"
                     "<em>#{power[key]}s</em> cooldown".html_safe
                   when "bonus"
-                    "<em>Bonus</em>: #{power[key]}".html_safe
+                    "<em>#{bonus(character_class)}</em>: #{power[key]}".html_safe
                   else
                     power[key]
                 end
-      content_tag(:span, content, :class => key)
+      css_class = case key
+                    when "type"
+                      "#{key} #{power[key]}"
+                    else
+                      key
+                  end
+      content_tag(:span, content, :class => css_class)
     end
 
     content_tag(:a, 
                 :class => "button", 
-                :rel => "#{power["name"]}",
+                :href => "#",
+                :rel => power["key"],
                 :title => tooltip,
                 :"data-toggle" => "tooltip",
                 :"data-placement" => "right",
@@ -52,6 +63,8 @@ private
 
   def powers(type, character_class)
     conf = class_config(character_class)
-    conf["powers"].select{|k,v| v["type"] == type}.map {|k, v| {"key" => k}.merge(v) }
+    bonus = conf['bonus']
+    conf["powers"].select{|k,v| v["type"] == type}
+                  .map {|k, v| {"key" => k}.merge(v) }
   end
 end

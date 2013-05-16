@@ -37,6 +37,13 @@ nw.template = function() {
         $('.button').not(this).popover('hide')
                               .removeClass('active');
         $(this).toggleClass('active');
+      });
+    $('#hud .button').bind('contextmenu', function(e) {
+      e.preventDefault();
+      $(this).popover('hide')
+             .removeClass('active')
+             .find('.image').removeAttr('style')
+      $(this).find('input').val('');
     });  
     
     // handles switching the selected power

@@ -122,10 +122,11 @@ $dailys: #fbcf2f
           margin-bottom: 5px
         .button
           z-index: 0
+          position: relative
           .image
             +box-shadow(none)
           &.active
-            z-index: 1000
+            z-index: 100
             +opacity(100)
             .change
               &:before
@@ -182,19 +183,21 @@ $dailys: #fbcf2f
             border: 1px solid $skills
 
   .tooltip
+    z-index: 2000
     &.in
       +opacity(100)
     &.right
       .tooltip-arrow
-        border-right-color: rgba(255,255,255,0.2)
+        border-right-color: #333
     .tooltip-inner
+      z-index: 2000
       background: #151515
       +box-shadow(#{inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.05)})
       border: 1px solid #333
       +clearfix
       text-align: left
       min-width: 200px
-      text-shadow: 0px 1px 0px #000
+      text-shadow: 0px 1px 1px #000
       line-height: normal
       font-size: 12px !important
       color: #bbb
@@ -210,14 +213,24 @@ $dailys: #fbcf2f
         display: block
       .range
         display: block
+        color: #555
       .type
         position: absolute
         right: 15px
         top: 5px
         display: inline
         text-align: right
+        &.encounter
+          color: $encounters !important
+        &.daily
+          color: $dailys !important
+        &.skill
+          color: $skills !important
+        &.at_will
+          color: $at_wills !important
       .desc
         display: block
+        margin: 2px 0px
       .bonus, .cooldown
         display: block
       .cooldown
@@ -227,6 +240,6 @@ $dailys: #fbcf2f
           font-style: normal
       .bonus
         em 
-          color: #555
+          color: #0078ff
           font-weight: bold
           font-style: normal
