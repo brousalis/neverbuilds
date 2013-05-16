@@ -50,7 +50,7 @@ module BuildsHelper
                 :rel => power["key"],
                 :title => tooltip,
                 :"data-toggle" => "tooltip",
-                :"data-placement" => "right",
+                :"data-placement" => "top",
                 :"data-html" => "true") do
       content_tag(:div, 
                   :class => "image", 

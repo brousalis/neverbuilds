@@ -3,6 +3,7 @@ $skills: #ff9c00
 $at_wills: #29dda0
 $dailys: #fbcf2f
 .template
+  margin-top: 35px
   margin-bottom: 30px
   .btn
     line-height: 18px !important
@@ -126,8 +127,8 @@ $dailys: #fbcf2f
           .image
             +box-shadow(none)
           &.active
-            z-index: 1000
             +opacity(100)
+            z-index: 1011
             .change
               &:before
                 border-left: 3px solid transparent
@@ -183,14 +184,12 @@ $dailys: #fbcf2f
             border: 1px solid $skills
 
   .tooltip
-    z-index: 2000
     &.in
       +opacity(100)
-    &.right
+    &.top
       .tooltip-arrow
-        border-right-color: #333
+        border-top-color: #333
     .tooltip-inner
-      z-index: 2000
       background: #151515
       +box-shadow(#{inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.05)})
       border: 1px solid #333
@@ -209,15 +208,15 @@ $dailys: #fbcf2f
         color: gold
         text-transform: uppercase
         margin-bottom: 8px
-        max-width: 100px
+        max-width: 110px
         display: block
       .range
         display: block
         color: #555
       .type
         position: absolute
-        right: 15px
-        top: 5px
+        right: 10px
+        top: 11px
         display: inline
         text-align: right
         &.encounter
