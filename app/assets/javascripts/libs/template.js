@@ -43,6 +43,7 @@ nw.template = function() {
       $(this).popover('hide')
              .removeClass('active')
              .find('.image').removeAttr('style')
+      $('[rel="'+$(this).find('input').val()+'"]').removeClass('hidden');
       $(this).find('input').val('');
     });  
     
@@ -53,18 +54,24 @@ nw.template = function() {
       var power = $(this).attr('rel'),
           image = $(this).find('.image'),
           input = $(this).parents().find('.active input'),
-          active = $(this).parents().find('.active .image');
+          active = $(this).parents().find('.active .image'),
+          button = $(this).parents().find('.active');
 
+      // unhide the previously selected power
       if(input.val()) {
         $('[rel="'+input.val()+'"]').removeClass('hidden');
       }
-       
+      
+      // set the input to the newly selected power
       input.val(power);
 
+      // hide the power in the popover
       $('[rel="'+power+'"]').addClass('hidden');
 
+      // copy the selected power's image to the hud
       active.css('background', image.css('background'));
 
+      // close the popover
       $('.button').popover('hide').removeClass('active');
     }); 
 

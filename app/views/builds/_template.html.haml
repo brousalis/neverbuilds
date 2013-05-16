@@ -27,7 +27,7 @@
 
       %li.encounters
         %span.type encounters
-        %a.button.encounter{:href => '#', :rel => 'encounter'}
+        %a.button.encounter{:href => '#', :rel => 'encounter', :"data-toggle" => "tooltip", :"data-html" => "true", :"data-button" => "right"}
           %span.change
           %span.image
           = hud.hidden_field 'encounter1'
