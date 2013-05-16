@@ -24,7 +24,6 @@
           %span.change
           %span.image
           = hud.hidden_field 'at_will2'
-
       %li.encounters
         %span.type encounters
         %a.button.encounter{:href => '#', :rel => 'encounter', :"data-toggle" => "tooltip", :"data-html" => "true", :"data-button" => "right"}
@@ -39,7 +38,6 @@
           %span.change
           %span.image
           = hud.hidden_field 'encounter3'
-
       %li.dailys
         %span.type dailys
         %a.button.daily{:href => '#', :rel => 'daily'}
@@ -48,7 +46,6 @@
         %a.button.daily{:href => '#', :rel => 'daily'}
           %span.image
           = hud.hidden_field 'daily2'
-
       %li.skills
         %span.type class features
         %a.button.skill{:href => '#', :rel => 'skill'}
@@ -75,4 +72,14 @@
   .selector{:"data-button" => "skill"}
     - skills(character_class).each do |power|
       = power_button(power, character_class)
+
+.powers
+  .header
+    %span.title Powers
+    %span.count VIEWS
+  .content
+    .left-pane
+      .racial
+      .power-list
+    .right-pane
 
