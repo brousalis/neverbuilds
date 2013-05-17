@@ -32,11 +32,17 @@ module BuildsHelper
           "<em>#{power[key]}s</em> cooldown".html_safe
         when "bonus"
           "<em>#{bonus(character_class)}</em>: #{power[key]}".html_safe
+        when "rank_2", "rank_3"
+          Rails.logger.debug "#{power}: #{key} || #{power[key]}"
+          value = power[key].split(":") if power[key]
+          "<em>#{value[0]}</em>: #{value[1]}".html_safe
         else
           power[key]
       end
 
       css_class = case key
+        when "name"
+          "#{key} #{power[key]}" 
         when "type"
           "#{key} #{power[key]}"
         else

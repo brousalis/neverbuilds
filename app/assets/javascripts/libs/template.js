@@ -61,14 +61,14 @@ nw.template = function() {
 
       // unhide the previously selected power
       if(input.val()) {
-        $('#hud [rel="'+input.val()+'"]').removeClass('hidden');
+        $('[rel="'+input.val()+'"]').removeClass('hidden');
       }
       
       // set the input to the newly selected power
       input.val(power);
 
       // hide the power in the popover
-      $('#hud [rel="'+power+'"]').addClass('hidden');
+      $('[rel="'+power+'"]').addClass('hidden');
 
       // copy the selected power's image to the hud
       active.css('background', image.css('background'));
@@ -81,16 +81,27 @@ nw.template = function() {
   var handle_tree = function() {
     $('.count span').html(_points);
 
+    // only scroll tree
     $('.tree').mouseenter(function(){
       $('body').css('overflow', 'hidden');
     }).mouseleave(function(){
       $('body').css('overflow', 'auto');
     });
 
+    // hover over power fills the sidebar
     $('.tree .button').mouseenter(function(){
-      $('.details').html($(this).data('original-title'));
+      if($('.details .icon').length > -1)
+        $('.details .icon').remove();
+
+      $('.details').html($(this).data('originalTitle'));
+
+      $('<div/>', {
+        class: 'icon',
+        style: 'background: '+$(this).find('.image').css('background'),
+      }).prependTo('.details');
     });
     
+    // left click rank up the powers
     $('.tree .button').on('click', function(e) {
       e.preventDefault();
       if(_points == 0)
@@ -100,16 +111,19 @@ nw.template = function() {
       switch(val) {
         case 0:
           $(this).find('.rank:lt(1)').addClass('on');
+          $('.details .desc').addClass('on');
           rank.val(val + 1);
           $(this).addClass('enabled');
           sub_points();
           break; 
         case 1:
           $(this).find('.rank:lt(2)').addClass('on');
+          $('.details .desc, .details .rank_2').addClass('on');
           rank.val(val + 1);
           sub_points();
           break;
         case 2:
+          $('.details .desc, .details .rank_2, .details .rank_3').addClass('on');
           $(this).find('.rank:lt(3)').addClass('on');
           rank.val(val + 1);
           sub_points();
@@ -118,6 +132,7 @@ nw.template = function() {
       $('.count span').html(_points)
     });
 
+    // right click rank down the powers
     $('.tree .button').bind('contextmenu', function(e) {
       e.preventDefault();
       if(_points == 0)
@@ -130,6 +145,7 @@ nw.template = function() {
           break; 
         case 1:
           $(this).find('.rank').removeClass('on')
+          $('.details .desc, .details .rank_2, .details .rank_3').removeClass('on');
           rank.val(val - 1);
           $(this).removeClass('enabled');
           add_points();
@@ -137,12 +153,14 @@ nw.template = function() {
         case 2:
           $(this).find('.rank').removeClass('on');
           $(this).find('.rank:first').addClass('on');
+          $('.details .rank_2, .details .rank_3').removeClass('on');
           rank.val(val - 1);
           add_points();
           break;
         case 3:
           $(this).find('.rank').removeClass('on');
           $(this).find('.rank:lt(2)').addClass('on');
+          $('.details .rank_3').removeClass('on');
           rank.val(val - 1);
           add_points();
           break; 

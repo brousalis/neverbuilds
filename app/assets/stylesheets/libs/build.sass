@@ -2,6 +2,7 @@ $encounters: #ac0f0d
 $at_wills: #29dda0
 $skills: #fbcf2f
 $dailys: #ff8700
+
 .template
   margin-bottom: 30px
   .btn
@@ -103,6 +104,7 @@ $dailys: #ff8700
 
   .hud
     margin-top: 10px
+    text-align: center
     .selector
       display: none
     #hud
@@ -119,15 +121,17 @@ $dailys: #ff8700
           font-weight: bold
           color: #aaa
           text-transform: uppercase
+          text-align: left
           line-height: 22px  
           margin-bottom: 5px
         .button
-          z-index: 0
+          z-index: 10
           position: relative
           .image
             +box-shadow(none)
           &.active
             +opacity(100)
+            z-index: 100
             .change
               &:before
                 border-left: 3px solid transparent
@@ -137,7 +141,7 @@ $dailys: #ff8700
         .popover
           background: #000
           +border-radius(0)
-          z-index: 100
+          z-index: 90
           &.top
             margin-top: 1px
           .arrow
@@ -183,7 +187,7 @@ $dailys: #ff8700
             border: 1px solid $skills
   
 .powers
-  margin: 30px 0px
+  margin: 30px auto
   position: relative
   width: 900px
   .button
@@ -191,7 +195,7 @@ $dailys: #ff8700
     margin: 5px 5px 5px 5px
     display: block
     float: left
-    background: rgba(0,0,0,0.8)
+    background: rgba(0,0,0,0.3)
     border: 1px solid #111
     .image
       display: inline-block
@@ -236,7 +240,7 @@ $dailys: #ff8700
         +background-clip(padding-box)
         float: left
         margin-right: 3px
-        +opacity(60)
+        +opacity(80)
         &.on
           +opacity(100)
           border: 1px solid #333
@@ -301,5 +305,130 @@ $dailys: #ff8700
             width: 45%
     .right-pane
       float: left
-      background: #000
-      width: 25%
+      width: 238px
+      position: relative
+      font-size: 13px
+      .icon
+        display: none
+        border: 1px solid #222
+        background: #222
+        float: left
+        width: 65px
+        height: 65px 
+        display: block
+        padding: 1px
+        background-size: 100% !important  
+      .details
+        padding: 8px
+        line-height: 16px
+        .key, .level, .paragon
+          display: none
+        .name
+          display: block  
+          width: 143px
+          float: left
+          margin-left: 10px
+          font-size: 14px
+          font-weight: bold
+          color: #fff
+          text-transform: uppercase
+          &.encounter
+            color: $encounters !important
+          &.daily
+            color: $dailys !important
+          &.skill
+            color: $skills !important
+          &.at_will
+            color: $at_wills !important   
+        .type
+          display: block  
+          float: left
+          width: 143px
+          margin-left: 10px
+          font-size: 14px
+          font-weight: bold
+          &.encounter
+            color: $encounters !important
+          &.daily
+            color: $dailys !important
+          &.skill
+            color: $skills !important
+          &.at_will
+            color: $at_wills !important  
+        .range, .cooldown
+          display: block  
+          width: 143px
+          float: left
+          margin-left: 10px
+          font-size: 14px
+          font-weight: normal
+          em
+            font-style: normal
+        .cooldown
+          em
+            color: green
+            font-weight: bold
+            font-style: normal 
+        .desc
+          float: left
+          padding-left: 40px
+          margin-top: 10px
+          display: block 
+          line-height: normal
+          background: image-url('big_rank1_off.png') no-repeat 2px 5px
+          position: relative
+          &.on
+            background: image-url('big_rank1_on.png') no-repeat 2px 5px
+            &:before
+              border: 1px solid #333
+          &:before
+            content: ''
+            border: 1px solid #222
+            width: 24px
+            height: 22px
+            display: block
+            left: 0px
+            top: 3px
+            position: absolute 
+        .bonus
+          margin-top: 10px
+          padding-left: 40px
+          line-height: normal
+          display: block
+          float: left
+          em 
+            color: #0078ff
+            font-weight: bold
+            font-style: normal
+        .rank_2, .rank_3
+          margin-top: 20px
+          display: block
+          padding-left: 40px
+          height: 30px
+          position: relative
+          float: left
+          &:before
+            content: ''
+            border: 1px solid #222
+            width: 24px
+            height: 22px
+            display: block
+            left: 0px
+            top: -2px
+            position: absolute
+          em
+            color: $skills
+            font-weight: bold
+            font-style: normal 
+          &.on
+            &:before
+              border: 1px solid #333 
+        .rank_2
+          background: image-url('big_rank2_off.png') no-repeat 2px 0px
+          &.on
+            background: image-url('big_rank2_on.png') no-repeat 2px 0px
+        .rank_3
+          background: image-url('big_rank3_off.png') no-repeat 2px 0px
+          &.on
+            background: image-url('big_rank3_on.png') no-repeat 2px 0px
+       

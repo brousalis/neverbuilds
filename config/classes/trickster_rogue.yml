@@ -224,8 +224,6 @@ powers:
     paragon: "Inflitrator"
     range: "30' range"
     desc: "Leap up and strike with a vicious attack that ignores your targets' defense and deals additional damage based an how much health they are missing."
-    rank_2:
-    rank_3:
     level: 50
   smoke_bomb:
     name: Smoke Bomb
