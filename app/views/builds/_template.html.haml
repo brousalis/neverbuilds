@@ -59,27 +59,35 @@
 
   .selector{:"data-button" => "at_will"}
     - at_wills(character_class).each do |power|
-      = power_button(power, character_class)
+      = hud_button(power, character_class)
 
   .selector{:"data-button" => "encounter"}
     - encounters(character_class).each do |power|
-      = power_button(power, character_class)
+      = hud_button(power, character_class)
 
   .selector{:"data-button" => "daily"}
     - dailys(character_class).each do |power|
-      = power_button(power, character_class)
+      = hud_button(power, character_class)
 
   .selector{:"data-button" => "skill"}
     - skills(character_class).each do |power|
-      = power_button(power, character_class)
+      = hud_button(power, character_class)
 
 .powers
   .header
     %span.title Powers
-    %span.count VIEWS
+    %span.count 
+      %span
+      points left
   .content
     .left-pane
       .racial
-      .power-list
-    .right-pane
 
+      .tree
+        - power_tree(character_class) do |level, powers|
+          %span.divider Level #{level}
+          .buttons
+            - powers.each do |power|
+              = tree_button(power, character_class)
+    .right-pane
+      .details

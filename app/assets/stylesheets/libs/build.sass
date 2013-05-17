@@ -1,8 +1,7 @@
 $encounters: #ac0f0d 
-$skills: #ff9c00
 $at_wills: #29dda0
-$dailys: #fbcf2f
-
+$skills: #fbcf2f
+$dailys: #ff8700
 .template
   margin-bottom: 30px
   .btn
@@ -48,6 +47,7 @@ $dailys: #fbcf2f
         border-bottom: 4px solid #444
         display: inline-block  
     &.daily 
+      +background-clip(padding-box)
       +border-radius(30px)
       .image
         +border-radius(30px) 
@@ -128,7 +128,6 @@ $dailys: #fbcf2f
             +box-shadow(none)
           &.active
             +opacity(100)
-            z-index: 1011
             .change
               &:before
                 border-left: 3px solid transparent
@@ -182,67 +181,112 @@ $dailys: #fbcf2f
             border-top: 1px solid #000
           .popover
             border: 1px solid $skills
-
-  .tooltip
-    &.in
-      +opacity(100)
-    &.top
-      .tooltip-arrow
-        border-top-color: #333
-    .tooltip-inner
-      background: #151515
-      +box-shadow(#{inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.05)})
-      border: 1px solid #333
-      +clearfix
-      text-align: left
-      min-width: 200px
-      text-shadow: 0px 1px 1px #000
-      line-height: normal
-      font-size: 12px !important
-      color: #bbb
-      .key, .rank_1, .rank_2, .rank_3, .level, .paragon
-        display: none
-      .name 
-        font-size: 12px
-        font-weight: bold
-        color: gold
-        text-transform: uppercase
-        margin-bottom: 8px
-        max-width: 110px
-        display: block
-      .range
-        display: block
-        color: #555
-      .type
-        position: absolute
-        right: 10px
-        top: 11px
-        display: inline
-        text-align: right
-        &.encounter
-          color: $encounters !important
-        &.daily
-          color: $dailys !important
-        &.skill
-          color: $skills !important
-        &.at_will
-          color: $at_wills !important
-      .desc
-        display: block
-        margin: 2px 0px
-      .bonus, .cooldown
-        display: block
-      .cooldown
-        em
-          color: green
-          font-weight: bold
-          font-style: normal
-      .bonus
-        em 
-          color: #0078ff
-          font-weight: bold
-          font-style: normal
-
+  
 .powers
   margin: 30px 0px
-  
+  position: relative
+  width: 900px
+  .button
+    width: 200px
+    margin: 5px 5px 5px 5px
+    display: block
+    float: left
+    background: rgba(0,0,0,0.8)
+    border: 1px solid #111
+    .image
+      display: inline-block
+      +box-shadow(none)
+      float: left
+      +opacity(80)
+      height: 50px
+      width: 50px
+    &.encounter .name
+      color: $encounters !important
+    &.daily .name
+      color: $dailys !important
+    &.skill .name
+      color: $skills !important
+    &.at_will .name
+      color: $at_wills !important  
+    &:hover
+      border: 1px solid #222
+      .image
+        +opacity(100)
+    .name
+      display: block 
+      font-size: 11px
+      font-weight: bold
+      color: #aaa
+      text-transform: uppercase
+      line-height: normal
+      margin-bottom: 5px 
+      padding: 5px
+      margin-left: 58px
+    .ranks
+      position: absolute
+      bottom: 1px
+      left: 58px
+      padding: 5px
+      .rank
+        display: block
+        width: 10px
+        height: 10px
+        background: #000
+        border: 2px solid #222
+        +background-clip(padding-box)
+        +border-radius(30px)
+        float: left
+        margin-right: 3px
+        &.active 
+          border: 2px solid #333
+          background: #333
+    &.daily
+      +border-radius(30px 0px 0px 30px)
+    &.active
+      .image
+        +opacity(100)
+      &.encounter
+        border: 1px solid $encounters !important
+      &.daily
+        border: 1px solid $dailys !important
+      &.skill
+        border: 1px solid $skills !important
+      &.at_will
+        border: 1px solid $at_wills !important 
+  .content
+    +clearfix
+    +box-sizing(border-box)
+    .left-pane
+      border-right: 1px solid #222
+      position: relative
+      width: 655px
+      float: left
+      height: 500px
+      overflow: scroll
+      .tree
+        margin-left: 4px
+        .buttons
+          +clearfix
+        .divider
+          +clearfix
+          text-align: center
+          width: 100%
+          margin: 10px 0px
+          font-size: 11px
+          font-weight: bold
+          text-transform: uppercase
+          color: #555
+          padding: 5px 0px
+          line-height: 0.5
+          position: relative
+          display: table
+          white-space: nowrap
+          &:before, &:after
+            display: table-cell
+            content: ""
+            border-top: 1px solid #0d0d0d
+            width: 45%
+    .right-pane
+      float: left
+      background: #000
+      width: 25%

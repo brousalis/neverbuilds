@@ -1,4 +1,6 @@
 nw.template = function() {
+  _points = 60;
+
   var init = function() {  
     // the almighty hack of all hacks
     $('body').tooltip({
@@ -14,6 +16,7 @@ nw.template = function() {
     // end should move somewhere else
 
     handle_hud();
+    handle_tree();
   };
 
   var save_build = function() {
@@ -74,7 +77,83 @@ nw.template = function() {
       // close the popover
       $('.button').popover('hide').removeClass('active');
     }); 
+  };
 
+  var handle_tree = function() {
+    $('.count span').html(_points);
+
+    $('.tree').mouseenter(function(){
+      $('body').css('overflow', 'hidden');
+    }).mouseleave(function(){
+      $('body').css('overflow', 'auto');
+    });
+
+    $('.tree .button').mouseenter(function(){
+      $('.details').html($(this).data('original-title'));
+    });
+    
+    $('.tree .button').on('click', function(e) {
+      e.preventDefault();
+      var rank = $(this).find('input'),
+          val = parseInt(rank.val(), 10);
+      switch(val) {
+        case 0:
+          $(this).find('.rank:lt(1)').addClass('active');
+          rank.val(val + 1);
+          sub_points();
+          break; 
+        case 1:
+          $(this).find('.rank:lt(2)').addClass('active');
+          rank.val(val + 1);
+          sub_points();
+          break;
+        case 2:
+          $(this).find('.rank:lt(3)').addClass('active');
+          rank.val(val + 1);
+          sub_points();
+          break;
+      }
+      $('.count span').html(_points)
+    });
+
+    $('.tree .button').bind('contextmenu', function(e) {
+      e.preventDefault();
+      var rank = $(this).find('input'),
+          val = parseInt(rank.val(), 10);
+      switch(val) {
+        case 0:
+          $(this).find('.rank').removeClass('active')
+          break; 
+        case 1:
+          $(this).find('.rank').removeClass('active')
+          rank.val(val - 1);
+          add_points();
+          break;
+        case 2:
+          $(this).find('.rank').removeClass('active');
+          $(this).find('.rank:first').addClass('active');
+          rank.val(val - 1);
+          add_points();
+          break;
+        case 3:
+          $(this).find('.rank').removeClass('active');
+          $(this).find('.rank:lt(2)').addClass('active');
+          rank.val(val - 1);
+          add_points();
+          break; 
+      } 
+      $('.count span').html(_points)
+    });
+  };
+
+  var add_points = function() { 
+    if(_points > 60) return false;
+    _points++
+  };
+
+  var sub_points = function() {
+    if(_points == 0) return false;
+    _points--
   };
   return {
     init: init
