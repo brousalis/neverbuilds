@@ -101,8 +101,8 @@
       .feat-list
     .paragon
       - feat_tree(character_class) do |sect, feats|
-        .div{:class => sect}
-          = sect
-          - feats.each_slice(1) do |feat|
-            - Rails.logger.debug feat
-            = feat_button(feat, character_class)
+        %div{:class => sect}
+          %ul
+            - feats.each do |feat|
+              %li
+                = feat_button(feat, character_class)

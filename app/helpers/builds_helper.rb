@@ -98,7 +98,7 @@ module BuildsHelper
     content_tag(:a, 
                 :class => "button", 
                 :href => "#",
-                :rel => feat["name"],
+                :rel => feat["key"],
                 :"data-toggle" => "tooltip",
                 :"data-placement" => "top",
                 :"data-animation" => "false",
@@ -112,14 +112,14 @@ module BuildsHelper
 
   def power_tree(character_class) 
     config = class_config(character_class)
-    config["powers"].group_by {|k,v| v["level"] }.each do |level, powers| 
-      yield level, powers.map{|k,v| {"key" => k}.merge(v)}
+    config["powers"].group_by {|k,v| v["level"]}.each do |level, powers| 
+      yield level, powers.map {|k,v| {"key" => k}.merge(v)}
     end
   end
 
   def feat_tree(character_class) 
     config = class_config(character_class)
-    config["feats"].group_by {|k,v| k}.each do |sect, feats| 
+    config["feats"].each do |sect, feats| 
       yield sect, feats
     end
   end 

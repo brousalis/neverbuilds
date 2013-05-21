@@ -237,162 +237,240 @@ powers:
 
 feats:
   heroic: 
-    action_advantage:
+    - 
+      key: action_advantage
       name: Action Advantage
       points: 5 
       desc: "2/4/6/8/10% additional Action Point for dealing Combat Advantage damage."
-    weapon_mastery:
+      type: tactical
+    -
+      key: weapon_mastery
       name: Weapon Mastery
       points: 3 
       desc: "1/2/3% greater chance to land a critical hit."
-    toughness:
+      type: assault
+    -
+      key: toughness
       name: Toughness
       points: 3 
       desc: "Increase your Maximum Hit Points by 3/6/9%."
-    swift_footwork:
+      type: enduring2
+    -
+      key: swift_footwork
       name: Swift Footwork
       points: 5 
       desc: "Your Stamina regenerates 2/4/6/8/10% faster."
-    battlewise:
+      type: surefooted
+    -
+      key: battlewise
       name: Battlewise
       points: 3 
       desc: "You create 2/4/6% less threat."
-    cunning_ambusher:
+      type: strategy
+    -
+      key: cunning_ambusher
       name: Cunning Ambusher
       points: 3 
       desc: "You deal 2/4/6% more damage for 6 seconds after leaving Stealth"
-    endless_assault:
+      type: intellect
+    -
+      key: endless_assault
       name: Endless Assault
       points: 3 
       desc: "Your encounters deal 2/4/6% more damage."
-    twilight_adept:
+      type:  damage
+    -
+      key: twilight_adept
       name: Twilight Adept
       points: 5 
       desc: "Restores 2/4/6/8/10% of your Stealth Meter when you Dodge Roll."
-    lucky_skirmisher:
+      type: intellect
+    -
+      key: lucky_skirmisher
       name: Lucky Skirmisher
       points: 3 
       desc: "Increase your chance to Deflect by 1/2/3%."
-    scoundrel_training:
+      type: chance
+    -
+      key: scoundrel_training
       name: Scoundrel Training
       points: 3 
       desc: "Your At-Wills deal 3/6/9% more damage to foes not targeting you."
-    disciple_of_strength:
+      type: agility
+    -
+      key: disciple_of_strength
       name: Disciple Of Strength
       points: 3 
       desc: "Increase the amount of bonus damage Strength gives you by 5/10/15%."
-    improved_cunning_sneak:
+      type: power
+    -
+      key: improved_cunning_sneak
       name: Improved Cunning Sneak
       points: 5 
       desc: "Your Stealth lasts 4/8/12/16/20% longer."
+      type: cunning2
   top:
-    speed_swindle:
+    -
+      key: speed_swindle
       name: Speed Swindle
       points: 5 
       desc: "When you crit a foe it loses 2/4/6/8/10% Run Speed, you gain 2/4/6/8/10%."
-    cunning_stalker:
+      type: agiilty
+    -
+      key: cunning_stalker
       name: Cunning Stalker
       points: 5 
       desc: "While Stealthed, you build 4/8/12/16/20% more Action Points."
-    nimble_dodge:
+      type: 
+    -
+      key: nimble_dodge
       name: Nimble Dodge
       points: 5 
       desc: "Your dodge costs 2/4/6/8/10% less Stamina. This reduction is doubled while Stealthed."
-    sneaky_stabber:
+      type: surefooted
+    -
+      key: sneaky_stabber
       name: Sneaky Stabber
       points: 5 
       desc: "Your Gloaming Cut now grants 2/4/6/8/10% of your Stealth meter."
-    baited_action:
+      type: assault
+    -
+      key: baited_action
       name: Baited Action
       points: 5 
       desc: "Your Bait and Switch Dummy has 2/4/6/8/10% more health and reflects 1/2/3/4/5% of damage delt to it."
-    expert_sneak:
+      type: presence2
+    -
+      key: expert_sneak
       name: Expert Sneak
       points: 5 
       desc: "While Stealthed, you gain 2/4/6/8/10% Run speed and your At Will Powers reduce your target’s damage by 1/2/3/4/5%"
-    sneak_of_shadows:
+      type: presence2
+    -
+      key: sneak_of_shadows
       name: Sneak Of Shadows
       points: 5 
       desc: "Deal 2/4/6/8/10% more damage while Stealthed."
-    unerring_ambush:
+      type: cunning
+    -
+      key: unerring_ambush
       name: Unerring Ambush
       points: 5 
       desc: "Strikes with Deft Strike, Dazing Strike and Blitz deal 4/8/12/16/20% more damage from Stealth."
-    ruthless_efficiency:
+      type: agility
+    -
+      key: ruthless_efficiency
       name: Ruthless Efficiency
       points: 1 
       desc: "When you land a killing blow, your Armor Pen is increased by 30% for 6 seconds."
+      type: courage
   middle:
-    berserk_vitality:
+    -
+      key: berserk_vitality
       name: Berserk Vitality
       points: 5 
       desc: "Gain .5/1/1.5/2/2.5% of your Max Hit Points as Temporary Hit Points when you deal Combat Advantage damage to a foe. This can only occur once every 20 seconds."
-    underhanded_tactics:
+      type: enduring2
+    -
+      key: underhanded_tactics
       name: Underhanded Tactics
       points: 5 
       desc: "Increase the effectiveness of Combat Advantage for you by 4/8/12/16/20%"
-    press_the_advantage:
+      type: cunning2
+    -
+      key: press_the_advantage
       name: Press The Advantage
       points: 5 
       desc: "Your Impossible to Catch now also improves your Power by 2/4/6/8/10%"
-    nimble_blade:
+      type: damage2
+    -
+      key: nimble_blade
       name: Nimble Blade
       points: 5 
       desc: "35% chance to deal an additional 4/8/12/16/20% damage on a non critical strike."
-    mocking_knave:
+      type: assault
+    -
+      key: mocking_knave
       name: Mocking Knave
       points: 5 
       desc: "Sly Flourish and Cloud of Steel deal 2/4/6/8/10% more damage. Additionally, Cloud of Steel’s damage bonus per stack is increased by .5/1/1.5/2/2.5%."
-    catspaw_style:
+      type: cunning
+    -
+      key: catspaw_style
       name: Catspaw Style
       points: 5 
       desc: "Your Blitz and Dazing Strike reduce the target’s defenses by 2/4/6/8/10%. This effect can not stack."
-    action_rush:
+      type: cunning
+    -
+      key: action_rush
       name: Action Rush
       points: 5 
       desc: "Your Encounter Powers have a 15% chance to grant 3/6/9/12/15% of your Action Point"
-    brutal_wound:
+      type: presence2
+    -
+      key: brutal_wound
       name: Brutal Wound
       points: 5 
       desc: "Courage Breaker and Whirlwind of Blades also deal 50/100/150/200/250% of your weapon damage over 5 seconds."
-    whirlwind_sneak_attack:
+      type: poison
+    -
+      key: whirlwind_sneak_attack
       name: Whirlwind Sneak Attack
       points: 1 
       desc: "For 10 seconds after Stealth ends, the first time you hit with an encounter power it will deal 15% additional damage."
+      type: damage
   bottom:
-    dazzling_blades:
+    -
+      key: dazzling_blades
       name: Dazzling Blades
       points: 5 
       desc: "Your At-Will powers have a 3/6/9/12/15% chance to reduce the cooldown on recharging Encounter powers by 1 second."
-    thrill_of_the_kill:
+      type: poison
+    -
+      key: thrill_of_the_kill
       name: Thrill Of The Kill
       points: 5 
       desc: "When you land a killing blow, gain .2/.4/.6/.8/1% of your Action Points."
-    crueltys_reward:
+      type: cunning
+    -
+      key: crueltys_reward
       name: Crueltys Reward
       points: 5 
       desc: "When you critically strike a foe you generate 2/4/6/8/10% less threat for 6 seconds."
-    devastating_shroud:
+      type: presence2
+    -
+      key: devastating_shroud
       name: Devastating Shroud
       points: 5 
       desc: "Increase your critical strike chance and severity by 2/4/6/8/10% for 6 seconds after using Shocking Execution."
-    brutal_backstab:
+      type: damage
+    -
+      key: brutal_backstab
       name: Brutal Backstab
       points: 5 
       desc: "While Stealthed you critical with 5/10/15/20/25% more severity."
-    critical_teamwork:
+      type: power
+    -
+      key: critical_teamwork
       name: Critical Teamwork
       points: 5 
       desc: "You and your nearby allies gain a 1/2/3/4/5% chance to crit."
-    deadly_momentum:
+      type: strategy
+    -
+      key: deadly_momentum
       name: Deadly Momentum
       points: 5 
       desc: "Duelist’s Flurry has a 5/10/15/20/25% chance to apply ‘Deadly Momentum’ Deadly Momentum; Increases your critical severity by 5% per stack."
-    sharpened_steel:
+      type: heritage2
+    -
+      key: sharpened_steel
       name: Sharpened Steel
       points: 5 
       desc: "Blitz and Wicked Reminder have 2/4/6/8/10% more chance to crit."
-    overrun_critical:
+      type: assault
+    -
+      key: overrun_critical
       name: Overrun Critical
       points: 1 
       desc: "When you land a critical hit, one of your next attacks strikes with 30% of your crit severity."
+      type: presence2
