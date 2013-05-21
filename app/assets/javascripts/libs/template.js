@@ -17,6 +17,15 @@ nw.template = function() {
 
     handle_hud();
     handle_tree();
+
+    $('.expand').on('click', function() {
+      $(this).toggleClass('on');
+      $('.powers').toggleClass('expanded');
+      return false;
+    });
+    $('.list').on('click', function() {
+      return false;
+    });
   };
 
   var save_build = function() {
@@ -89,16 +98,32 @@ nw.template = function() {
     });
 
     // hover over power fills the sidebar
-    $('.tree .button').mouseenter(function(){
+    $('.tree .button').on('mouseenter', function(){
       if($('.details .icon').length > -1)
         $('.details .icon').remove();
 
-      $('.details').html($(this).data('originalTitle'));
+      var data = $(this).data('originalTitle');
+      console.log(data);
+      $('.details').html(data);
 
       $('<div/>', {
         class: 'icon',
         style: 'background: '+$(this).find('.image').css('background'),
       }).prependTo('.details');
+
+      var rank = $(this).find('input'),
+          val = parseInt(rank.val(), 10);
+      switch(val) {
+        case 1:
+          $('.details .desc').addClass('on');
+          break; 
+        case 2:
+          $('.details .desc, .details .rank_2').addClass('on');
+          break;
+        case 3:
+          $('.details .desc, .details .rank_2, .details .rank_3').addClass('on');
+          break;
+      } 
     });
     
     // left click rank up the powers

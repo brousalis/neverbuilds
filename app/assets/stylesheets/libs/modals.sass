@@ -180,7 +180,7 @@
           text-transform: uppercase
           font-size: 28px
           overflow: hidden
-          +opacity(40)
+          +opacity(80)
           height: 190px
           font-family: 'proxima-nova-extra-condensed'
           display: block
@@ -225,7 +225,7 @@
             line-height: 25px
             text-align: left
           &:hover
-            +opacity(80)
+            +opacity(100)
   .class
     display: none
     .modal-header
@@ -254,6 +254,9 @@
       .class-picker
         li
           a
+            .class
             .image
+              background-position: 15px 0px !important
+              background-size: 150px !important
               top: 0
               +opacity(30)

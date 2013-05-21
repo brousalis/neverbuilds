@@ -33,7 +33,6 @@ module BuildsHelper
         when "bonus"
           "<em>#{bonus(character_class)}</em>: #{power[key]}".html_safe
         when "rank_2", "rank_3"
-          Rails.logger.debug "#{power}: #{key} || #{power[key]}"
           value = power[key].split(":") if power[key]
           "<em>#{value[0]}</em>: #{value[1]}".html_safe
         else
@@ -86,6 +85,7 @@ module BuildsHelper
                 :title => tooltip(power, character_class),
                 :"data-toggle" => "tooltip",
                 :"data-placement" => "top",
+                :"data-animation" => "false",
                 :"data-html" => "true") do
       content_tag(:div, 
                   :class => "image", 
@@ -94,12 +94,35 @@ module BuildsHelper
     end
   end
 
+  def feat_button(feat, character_class)
+    content_tag(:a, 
+                :class => "button", 
+                :href => "#",
+                :rel => feat["name"],
+                :"data-toggle" => "tooltip",
+                :"data-placement" => "top",
+                :"data-animation" => "false",
+                :"data-html" => "true") do
+      content_tag(:div, 
+                  :class => "image") do
+      end
+    end
+  end 
+
+
   def power_tree(character_class) 
     config = class_config(character_class)
     config["powers"].group_by {|k,v| v["level"] }.each do |level, powers| 
       yield level, powers.map{|k,v| {"key" => k}.merge(v)}
     end
   end
+
+  def feat_tree(character_class) 
+    config = class_config(character_class)
+    config["feats"].group_by {|k,v| k}.each do |sect, feats| 
+      yield sect, feats
+    end
+  end 
 
 private
 
