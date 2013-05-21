@@ -91,15 +91,12 @@
               = tree_button(power, character_class)
     .right-pane
       .details
-        
 
 .feats
   .header
     %span.title Feats
   .content
-    .heroic
-      .feat-list
-    .paragon
+    .feat-list
       - feat_tree(character_class) do |sect, feats|
         %div{:class => sect}
           %ul

@@ -315,13 +315,13 @@ feats:
       name: Speed Swindle
       points: 5 
       desc: "When you crit a foe it loses 2/4/6/8/10% Run Speed, you gain 2/4/6/8/10%."
-      type: agiilty
+      type: agility
     -
       key: cunning_stalker
       name: Cunning Stalker
       points: 5 
       desc: "While Stealthed, you build 4/8/12/16/20% more Action Points."
-      type: 
+      type: agility
     -
       key: nimble_dodge
       name: Nimble Dodge

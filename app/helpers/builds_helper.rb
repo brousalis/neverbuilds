@@ -104,8 +104,10 @@ module BuildsHelper
                 :"data-animation" => "false",
                 :"data-html" => "true") do
       content_tag(:div, 
-                  :class => "image") do
-      end
+                  :class => "image",
+                  :style => "background: url('/assets/feats/#{feat["type"]}.png')") do
+      end +
+      content_tag(:input, "", :name => feat["key"], :type => "hidden", :value => "0")
     end
   end 
 
