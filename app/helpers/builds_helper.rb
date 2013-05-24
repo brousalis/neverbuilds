@@ -100,12 +100,17 @@ module BuildsHelper
                 :href => "#",
                 :rel => feat["key"],
                 :"data-toggle" => "tooltip",
+                :"data-points" => feat["points"],
                 :"data-placement" => "top",
                 :"data-animation" => "false",
                 :"data-html" => "true") do
       content_tag(:div, 
                   :class => "image",
                   :style => "background: url('/assets/feats/#{feat["type"]}.png')") do
+      end +
+      content_tag(:span, :class => "points") do
+        content_tag(:strong, "0/") +
+        content_tag(:em, "#{feat["points"]}")
       end +
       content_tag(:input, "", :name => feat["key"], :type => "hidden", :value => "0")
     end

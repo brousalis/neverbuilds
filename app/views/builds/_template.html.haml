@@ -79,6 +79,7 @@
       %span
       points left
     .toolbox
+      %a.tool.reset{:href => "#"}
       %a.tool.expand{:href => "#"}
   .content
     .left-pane
@@ -95,6 +96,8 @@
 .feats
   .header
     %span.title Feats
+    .toolbox
+      %a.tool.reset{:href => "#"}
   .content
     .feat-list
       - feat_tree(character_class) do |sect, feats|
