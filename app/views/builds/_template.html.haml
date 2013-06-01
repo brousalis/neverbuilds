@@ -100,6 +100,14 @@
       %a.tool.reset{:href => "#"}
   .content
     .feat-list
+      .meta
+        %span.heroic
+          %em
+          points
+        %span.level
+          Level
+          %em
+          Build
       - feat_tree(character_class) do |sect, feats|
         %div{:class => sect}
           %ul

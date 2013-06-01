@@ -1,6 +1,6 @@
 nw.template = function() {
   _points = 60,
-  _feats = 0;
+  _heroics = 0;
 
   var init = function() {  
     // the almighty hack of all hacks
@@ -65,34 +65,48 @@ nw.template = function() {
   };
 
   var handle_feats = function() {
+    $('.meta .heroic em').html(_heroics);
+    $('.feat-list .heroic').addClass('enabled'); 
     $('.feat-list .button').on('click', function() {
       var points  = $(this).find('input'),
+          sect    = $(this).parents('div')[0],
+          type    = $(sect).attr('class'),
           max     = parseInt($(this).data('points'), 10),
           val     = parseInt(points.val(), 10);
+      if(!$(sect).hasClass('enabled')) return false;
       if(val != max) {
         $(this).addClass('on')
                .find('strong')
                .html((val + 1) + "/");
         points.val(val + 1);
+        if(type == 'heroic') _heroics++;
+        $('.meta .heroic em').html(_heroics);
       }
       return false;
     });
     $('.feat-list .button').bind('contextmenu', function() {
       var points  = $(this).find('input'),
+          sect    = $(this).parents('div')[0],
+          type    = $(sect).attr('class'),
           val     = parseInt(points.val(), 10);
+      if(!$(sect).hasClass('enabled')) return false;
       if(val != 0) {
+        $(this).find('strong')
+               .html((val - 1) + "/");
         points.val(val - 1);
-        $(this).find('strong').html((val - 1) + "/");
+        if(type == 'heroic') _heroics--;
+        $('.meta .heroic em').html(_heroics);
       }
-      if(val == 1)
+      if(val == 1) {
         $(this).removeClass('on');
-
+      }
       return false; 
     });
   };
 
   var handle_powers = function() {
     $('.count span').html(_points);
+
     // reset powers
     $('.powers .reset').on('click', function() {
       $('.powers .tree .button').removeClass('enabled');
@@ -146,18 +160,16 @@ nw.template = function() {
     });
     
     // left click rank up the powers
-    $('.tree .button').on('click', function(e) {
-      e.preventDefault();
-      if(_points == 0)
-        return false
-      var rank = $(this).find('input'),
-          val = parseInt(rank.val(), 10);
+    $('.tree .button').on('click', function() {
+      if(_points == 0) return false
+      var rank  = $(this).find('input'),
+          val   = parseInt(rank.val(), 10);
       switch(val) {
         case 0:
           $(this).find('.rank:lt(1)').addClass('on');
           $('.details .desc').addClass('on');
-          rank.val(val + 1);
           $(this).addClass('enabled');
+          rank.val(val + 1);
           sub_points();
           break; 
         case 1:
@@ -174,15 +186,14 @@ nw.template = function() {
           break;
       }
       $('.count span').html(_points)
+      return false;
     });
 
     // right click rank down the powers
-    $('.tree .button').bind('contextmenu', function(e) {
-      e.preventDefault();
-      if(_points == 0)
-        return false
-      var rank = $(this).find('input'),
-          val = parseInt(rank.val(), 10);
+    $('.tree .button').bind('contextmenu', function() {
+      if(_points == 0) return false
+      var rank  = $(this).find('input'),
+          val   = parseInt(rank.val(), 10);
       switch(val) {
         case 0:
           $(this).find('.rank').removeClass('on')
@@ -190,8 +201,8 @@ nw.template = function() {
         case 1:
           $(this).find('.rank').removeClass('on')
           $('.details .desc, .details .rank_2, .details .rank_3').removeClass('on');
-          rank.val(val - 1);
           $(this).removeClass('enabled');
+          rank.val(val - 1);
           add_points();
           break;
         case 2:
@@ -210,6 +221,7 @@ nw.template = function() {
           break; 
       } 
       $('.count span').html(_points)
+      return false;
     });
   };
 

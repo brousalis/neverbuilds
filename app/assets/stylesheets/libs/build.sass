@@ -464,6 +464,16 @@ $dailys: #ff8700
       +clearfix
       width: 100%
       position: relative
+      &.heroic 
+      &.top, &.middle, &.bottom
+      &.enabled
+        ul
+          li
+            .button
+              &:hover
+                +opacity(60)
+              &.on
+                +opacity(100)   
       ul
         +clearfix
         margin: 0
@@ -491,10 +501,7 @@ $dailys: #ff8700
               +box-shadow(#{inset 0 1px 2px rgba(255,255,255,0.4),inset 0 1px 10px rgba(0,0,0,0.2)})
               width: 44px
               height: 44px 
-            &:hover
-              +opacity(60)
-            &.on
-              +opacity(100)
+            
       &.heroic
         position: absolute
         width: 275px
