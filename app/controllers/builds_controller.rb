@@ -7,7 +7,7 @@ class BuildsController < ApplicationController
     @builds   = Build.where(:order => "created_at DESC").all
     @featured = Build.where(:type => "featured").limit(5)
     session[:class] = "trickster_rogue"
-    session[:race] = "halfling"
+    session[:race] = "human"
   end 
 
   def destroy

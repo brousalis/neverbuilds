@@ -1,6 +1,8 @@
 nw.template = function() {
   _points = 60,
   _feats = 0,
+  _human = 0,
+  _heroic = 0,
   _paragon = false;
 
   var init = function() {  
@@ -23,7 +25,6 @@ nw.template = function() {
       $('#build_category').val(this.innerText);
     })
 
-    // lol
     $('.paragon .class').center();
   };
 
@@ -89,6 +90,9 @@ nw.template = function() {
       $('.feats .content .meta .points em').html(0)
       $('.feats .content .meta .level em').html(10)
       _feats = 0;
+      _human = 0;
+      _heroic = 0;
+      _paragon = false;
       return false;
     }); 
     $('.feat-list .button').on('click', function() {
@@ -100,23 +104,27 @@ nw.template = function() {
       if(!$(this).parents('li').hasClass('enabled') || val == max) 
         return false;
 
-      if(_feats == 19) {
-        $('.feat-list div:not(.heroic) li:first-child').addClass('enabled');
-        _paragon = true;
-      }
-
-      if(type.indexOf('heroic') >= 0 && _feats >= 20)
-        return false;
-
-      if(_feats >= 51 && race != "human") {
+      if(_feats >= 51) {
        return false;
-      } 
-
-      if(_feats >= 51 && race == "human" && type.indexOf('heroic') <= 0) {
+      }
+      
+      if(_human > 3) {
         return false;
       }
 
-      add_feats();
+      if(type.indexOf('heroic') >= 0 && _human >= 3 && race == "human") {
+        return false;
+      }
+
+      if(type.indexOf('heroic') >= 0 && _feats >= 20 && race != "human") {
+        return false;
+      }
+
+      if(type.indexOf('heroic') >= 0 && _feats >= 20 && _paragon == true && race == "human") {
+        _human++;
+      }
+
+      add_feats(race, type);
 
       $('.meta .points em').html(_feats);
       $('.meta .level em').html(10 + _feats); 
@@ -126,7 +134,12 @@ nw.template = function() {
       input.val(val + 1); 
       
       var total = row_total($(this).parent().parent());
-
+ 
+      if(_feats == 20) {
+        $('.feat-list div:not(.heroic) li:first-child').addClass('enabled');
+        _paragon = true;
+      }
+       
       if(total % 5 == 0)
         $(this).parents('div').first().find('li:not(.enabled)').first().addClass('enabled');
 
@@ -136,37 +149,46 @@ nw.template = function() {
     $('.feat-list .button').bind('contextmenu', function() {
       var input   = $(this).find('input'),
           type    = $(this).parents('div').attr('class'),
-          val     = parseInt(input.val(), 10);
+          val     = parseInt(input.val(), 10),
+          race    = $('.character span:first-child').attr('data-race');
+
       if(!$(this).parents('li').hasClass('enabled') || val <= 0) 
         return false;
 
-      if(val == 1) $(this).removeClass('on');
-
       var total = row_total($(this).parents('li'));
 
-      if(total == 5 && (row_total($(this).parents('li').next()) > 0))
-        return false;
-
-      if(_feats >= 21 && _paragon == true && type.indexOf('heroic') >= 0) {
+      if(total == 5 && (row_total($(this).parents('li').next()) > 0)) {
         return false;
       }
 
+      if(_feats == 20 && _human == 0) {
+        $('.feat-list div:not(.heroic) li:first-child').removeClass('enabled');
+        _paragon = false;
+      }
+
+      if(_feats >= 21 && type.indexOf('heroic') >= 0 && _paragon == true && _human == 0) {
+        return false;
+      }
+
+      if(_feats >= 20 && type.indexOf('heroic') >= 0 && race == 'human' && _human > 0) {
+        _human--;
+      }
+
+      if(_feats >= 21 && _paragon == true && type.indexOf('heroic') >= 0 && race != 'human') {
+        return false;
+      }
+
+      if(val == 1) $(this).removeClass('on');
+       
       $(this).find('strong')
              .html((val - 1) + "/");
       input.val(val - 1); 
 
-
-      sub_feats();
+      sub_feats(race, type);
       
       $('.meta .points em').html(_feats);
       $('.meta .level em').html(10 + _feats);
-
-      if(_feats == 19) {
-        $('.feat-list div:not(.heroic) li:first-child').removeClass('enabled');
-        _paragon = false;
-        return false;
-      }
-
+      
       if($.inArray(total - 1, [4,9,14,19,24,29,34,39,44,49,54,59]) > -1) // <-- LOL 
         $(this).parents('div').first().find('li.enabled').last().removeClass('enabled');
 
@@ -311,22 +333,23 @@ nw.template = function() {
     _points--
   };
 
-  var add_feats = function() {
+   var add_feats = function(race, type) {
     if(_feats > 51) return false;
+    if(race == 'human' && _feats >= 20 && type.indexOf('heroic') >= 0) return false;
     _feats++;
   };
 
-  var sub_feats = function() {
+  var sub_feats = function(race, type) {
     if(_feats == 0) return false;
+    if(_human > 0) return false;
+    if(race == 'human' && _feats >= 20 && type.indexOf('heroic') >= 0 && _human == 0 && _paragon == true) return false;
     _feats--;
-  
   };
-
+  
   var handle_guide = function() {
     $('.add-video').on('click', function(e) {
       var url = $('.video-url').val();
       if (url.indexOf('youtube') == -1) {
-        alert("Enter a valid youtube url");
         return false;
       }
       var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
@@ -343,7 +366,6 @@ nw.template = function() {
       $('.video-url').val('');
       return false;
     });
-
    
     $('.builds .preview').on('click', function(e) {
       $('.builds textarea').toggle();

@@ -465,14 +465,20 @@ $dailys: #ff8700
     position: relative
     .meta
       position: absolute
-      top: 360px
-      left: 52px
+      top: 380px
+      left: 44px
       span 
         padding: 5px 8px
         background: #000
         margin-bottom: 5px
-        margin-right: 5px
+        margin-right: 10px
+        &.human 
+          background: none
+          display: block
+          margin-top: 8px
+          text-align: center
         em
+          font-style: normal
           font-weight: bold
     .paragon
       width: 320px
