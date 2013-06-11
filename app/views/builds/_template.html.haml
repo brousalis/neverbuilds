@@ -1,6 +1,6 @@
 .meta
   .character
-    %span.image{:class => "#{race}"}
+    %span.image{:class => "#{race}", :"data-race" => "#{race}"}
     .info
       %span 
         %strong #{current_user.username.humanize}'s 
@@ -81,10 +81,10 @@
     .toolbox
       %a.tool.reset{:href => "#"}
       %a.tool.expand{:href => "#"}
-  .content
-    .left-pane
+  .content.tree
+    .left-pane.nano
       .racial
-      .tree
+      .content
         - power_tree(character_class) do |level, powers|
           %span.divider Level #{level}
           .buttons
@@ -99,18 +99,31 @@
     .toolbox
       %a.tool.reset{:href => "#"}
   .content
+    .paragon
+      %span.image{:class => "image-#{character_class}"}
+      %span.class
+        = character_class.titleize
+        &dash;
+        = paragon(character_class)
+    .meta
+      %span.points
+        %em
+        points spent
+      %span.level
+        Level
+        %em 10
+        Build 
+      - if race == 'human'
+        %span.human
+          %em 
+            +3 
+          additional heroic points 
     .feat-list
-      .meta
-        %span.heroic
-          %em
-          points
-        %span.level
-          Level
-          %em
-          Build
       - feat_tree(character_class) do |sect, feats|
         %div{:class => sect}
           %ul
-            - feats.each do |feat|
+            - feats.each_slice(sect == 'heroic' ? 3 : 2) do |buttons|
               %li
-                = feat_button(feat, character_class)
+                - buttons.each do |feat|
+                  = feat_button(feat, character_class)
+            %li.sect= sect

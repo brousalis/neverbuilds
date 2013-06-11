@@ -192,6 +192,8 @@ $dailys: #ff8700
   position: relative
   width: 900px
   +transition(all 0.3s linear)
+  .content
+    background: #191919
   &.expanded
     .left-pane
       height: 1100px !important
@@ -202,18 +204,19 @@ $dailys: #ff8700
     float: left
     background: rgba(0,0,0,0.3)
     border: 1px solid #000
-    +box-shadow(#{inset 0 1px 2px rgba(255,255,255,0.1),inset 0 1px 10px rgba(0,0,0,0.2)})
     -moz-user-select: none
     -khtml-user-select: none
     -webkit-user-select: none
     user-select: none
     .image
       display: inline-block
-      +box-shadow(#{0 2px 6px rgba(0,0,0,0.4),0 1px 2px rgba(0,0,0,0.4)})
+      +box-shadow(#{0 2px 6px rgba(0,0,0,0.4) inset, 0 1px 2px rgba(0,0,0,0.4) inset})
       float: left
       +opacity(80)
       height: 50px
       width: 50px
+      margin: 0
+      border-right: 1px solid #000
     &.encounter .name
       color: $encounters !important
     &.daily .name
@@ -225,6 +228,7 @@ $dailys: #ff8700
     &:hover
       .image
         +opacity(100)
+    $left: 55px
     .name
       display: block 
       font-size: 11px
@@ -233,12 +237,12 @@ $dailys: #ff8700
       text-transform: uppercase
       line-height: normal
       margin-bottom: 5px 
-      padding: 5px
-      margin-left: 58px
+      padding: 2px 5px
+      margin-left: $left
     .ranks
       position: absolute
-      bottom: 1px
-      left: 58px
+      bottom: -2px
+      left: $left
       padding: 5px
       .rank
         display: block
@@ -290,8 +294,12 @@ $dailys: #ff8700
       position: relative
       width: 655px
       float: left
-      overflow: scroll
-      .tree
+      .content
+        padding: 0
+        margin: 0
+        border: none
+        @include box-shadow(none)
+        @include border-radius(0)
         margin-left: 4px
         .buttons
           +clearfix
@@ -316,7 +324,7 @@ $dailys: #ff8700
             width: 45%
     .right-pane
       float: left
-      width: 238px
+      width: 239px
       position: relative
       font-size: 13px
       border-left: 1px solid #000
@@ -454,40 +462,101 @@ $dailys: #ff8700
   width: 785px
   margin: 30px auto
   .content
+    position: relative
+    .meta
+      position: absolute
+      top: 360px
+      left: 52px
+      span 
+        padding: 5px 8px
+        background: #000
+        margin-bottom: 5px
+        margin-right: 5px
+        em
+          font-weight: bold
+    .paragon
+      width: 320px
+      height: 170px
+      position: absolute
+      top: 0
+      .class
+        position: absolute
+        top: 35%
+        text-transform: uppercase
+        background: #000
+        font-size: 12px
+        font-weight: bold
+        text-align: center
+        display: block
+        padding: 2px 6px
+      .image
+        position: absolute
+        width: 110px
+        height: 200px
+        background-size: 110px !important
+        left: 50%
+        margin-left: -52px
+        top: 10px
+        +opacity(80)
+        &.image-trickster_rogue
+          background: image-url('classes/big_trickster_rogue.png') no-repeat
+        &.image-devoted_cleric
+          background: image-url('classes/big_devoted_cleric.png') no-repeat
+        &.image-guardian_fighter
+          background: image-url('classes/big_guardian_fighter.png') no-repeat
+        &.image-control_wizard
+          background: image-url('classes/big_control_wizard.png') no-repeat
+        &.image-great_weapon_fighter
+          background: image-url('classes/big_great_weapon_fighter.png') no-repeat  
   .feat-list
+    padding-top: 40px
+    padding-bottom: 0px
     +clearfix
     position: relative
     background: image-url('feat_arrows.png') no-repeat
     background-position: 46% 48%
     div
-      margin-bottom: 20px
+      margin-bottom: 33px
       +clearfix
       width: 100%
       position: relative
-      &.heroic 
-      &.top, &.middle, &.bottom
-      &.enabled
-        ul
-          li
-            .button
-              &:hover
-                +opacity(60)
-              &.on
-                +opacity(100)   
+      margin-top: 5px
+      &:last-child
+        margin-bottom: 20px
       ul
         +clearfix
         margin: 0
+        position: relative
         li
           list-style: none
           float: left
           display: inline
-          .button
-            margin-bottom: 10px
-            position: relative
+          &.sect
+            position: absolute
+            top: -20px
+            font-size: 11px
+            left: 0
+            font-weight: bold
+            color: #aaa
             +opacity(20)
+            text-transform: uppercase
+            text-align: left
+            line-height: 22px  
+            margin-bottom: 10px
+          &.enabled
+            .button
+              +opacity(30)
+              &:hover
+                +opacity(50)
+              &.on
+                +opacity(100)    
+          .button
+            margin-bottom: 1px
+            position: relative
+            +opacity(10)
             .points
               position: absolute
-              bottom: -10px
+              bottom: -7px
               left: 10px
               background: #000
               padding: 0px 5px
@@ -501,19 +570,17 @@ $dailys: #ff8700
               +box-shadow(#{inset 0 1px 2px rgba(255,255,255,0.4),inset 0 1px 10px rgba(0,0,0,0.2)})
               width: 44px
               height: 44px 
-            
       &.heroic
         position: absolute
         width: 275px
-        top: 137px
+        top: 150px
         left: 30px
         z-index: 1000
         ul
           width: 290px
           li
             width: 25%
-      &.top, &.middle, &.bottom
-        margin-left: 20px
+      &:not(.heroic)
         ul
           float: right
           width: 375px

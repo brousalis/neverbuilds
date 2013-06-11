@@ -4,6 +4,7 @@ ability_score:
   secondary:
     - strength
     - charisma
+paragon: Master Infiltator
 powers:
   cloud_of_steel:
     name: Cloud Of Steel
@@ -309,7 +310,7 @@ feats:
       points: 5 
       desc: "Your Stealth lasts 4/8/12/16/20% longer."
       type: cunning2
-  top:
+  saboteur:
     -
       key: speed_swindle
       name: Speed Swindle
@@ -364,7 +365,7 @@ feats:
       points: 1 
       desc: "When you land a killing blow, your Armor Pen is increased by 30% for 6 seconds."
       type: courage
-  middle:
+  scoundrel:
     -
       key: berserk_vitality
       name: Berserk Vitality
@@ -419,7 +420,7 @@ feats:
       points: 1 
       desc: "For 10 seconds after Stealth ends, the first time you hit with an encounter power it will deal 15% additional damage."
       type: damage
-  bottom:
+  executioner:
     -
       key: dazzling_blades
       name: Dazzling Blades

@@ -23,6 +23,10 @@ module BuildsHelper
     class_config(character_class)["bonus"]
   end
 
+  def paragon(character_class)
+    class_config(character_class)["paragon"]
+  end 
+
   def tooltip(power, character_class)
     power.keys.collect do |key| 
       content = case key
