@@ -3,7 +3,8 @@
     .modal-header
       %h3 
         %span Choose a Race
-      %a.close{:href => "#", "data-dismiss" => "modal"} ×
+      - if session[:race]
+        %a.close{:href => "#", "data-dismiss" => "modal"} ×
     .modal-body
       %ul.list.race-picker
         - races.each do |race|

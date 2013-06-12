@@ -1,8 +1,6 @@
 nw.race_picker = function() {
   var init = function() {  
-    $('#picker').modal({show: false, 
-                        keyboard: false, 
-                        backdrop: 'static'});
+    $('#picker').modal({show: true, backdrop: 'static', keyboard: false});
 
     // choose a race
     $('.race-picker a').on('click', function() {
@@ -30,10 +28,14 @@ nw.race_picker = function() {
         url: "/builds/pick",
         data: {"race":  $('#race').val(), 
                "class": $('#class').val()},
-        dataType: "script"
+        dataType: "script",
+        success: function() {
+          setTimeout(function() {
+            $('.class').hide();
+            $('.race').show(); 
+          }, 500);
+        }
       }); 
-      $('.class').hide();
-      $('.race').show(); 
     });
   };
 
@@ -41,9 +43,14 @@ nw.race_picker = function() {
    $('#picker').modal('show');
   };
 
+  var hide = function() {
+   $('#picker').modal('hide');
+  }; 
+
   return {
     init: init,
-    show: show
+    show: show,
+    hide: hide
   };
 }();
  
