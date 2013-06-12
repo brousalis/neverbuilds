@@ -1,3 +1,5 @@
 $('#picker').modal('hide');
 
 $('.template').html("<%= escape_javascript(render :partial => 'template', :locals => {:character_class => @class, :race => @race}) %>"); 
+
+nw.template.init();

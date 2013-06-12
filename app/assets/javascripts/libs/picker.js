@@ -1,6 +1,6 @@
 nw.race_picker = function() {
   var init = function() {  
-    $('#picker').modal({show: true, 
+    $('#picker').modal({show: false, 
                         keyboard: false, 
                         backdrop: 'static'});
 
@@ -32,11 +32,18 @@ nw.race_picker = function() {
                "class": $('#class').val()},
         dataType: "script"
       }); 
+      $('.class').hide();
+      $('.race').show(); 
     });
   };
 
+  var show = function() {
+   $('#picker').modal('show');
+  };
+
   return {
-    init: init
+    init: init,
+    show: show
   };
 }();
  

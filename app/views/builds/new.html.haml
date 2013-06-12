@@ -69,4 +69,8 @@
               * List item 1
               * List item 2
 
-= render :partial => "picker" unless session[:class]
+= render :partial => "picker"
+
+- unless session[:class]
+  :javascript
+    nw.race_picker.show();

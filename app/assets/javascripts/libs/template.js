@@ -20,6 +20,10 @@ nw.template = function() {
       $('form').submit();
     });
 
+    $('.character').on('click', function() {
+      nw.race_picker.show();
+    });
+
     // build type (pvp/pve)
     $('fieldset.category a').on('click', function() {
       $('#build_category').val(this.innerText);
