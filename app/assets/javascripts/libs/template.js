@@ -1,11 +1,11 @@
 nw.template = function() {
-  _points = 60,
-  _feats = 0,
-  _human = 0,
-  _heroic = 0,
-  _paragon = false;
-
   var init = function() {  
+    _points = 60,
+    _feats = 0,
+    _human = 0,
+    _heroic = 0,
+    _paragon = false;
+ 
     // the almighty hack of all hacks
     $('body').tooltip({ selector: '[data-toggle=tooltip]' });
     
@@ -374,7 +374,6 @@ nw.template = function() {
     $('.builds .preview')
       .unbind('click')
       .bind('click', function(e) {
-        console.log(0)
         if($(this).attr('class').indexOf('active') >= 0) {
           $('.builds textarea').show();
           $('.builds #preview').removeClass('active');
