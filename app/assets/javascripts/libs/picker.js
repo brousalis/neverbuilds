@@ -1,6 +1,8 @@
 nw.race_picker = function() {
   var init = function() {  
-    $('#picker').modal({show: true, backdrop: 'static', keyboard: false});
+    $('#picker').modal({show:     true, 
+                        backdrop: 'static', 
+                        keyboard: false});
 
     // choose a race
     $('.race-picker a').on('click', function() {
@@ -31,8 +33,8 @@ nw.race_picker = function() {
         dataType: "script",
         success: function() {
           setTimeout(function() {
-            $('.class').hide();
-            $('.race').show(); 
+            $('.modal .class').hide();
+            $('.modal .race').show(); 
           }, 500);
         }
       }); 
