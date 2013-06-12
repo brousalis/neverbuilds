@@ -24,8 +24,7 @@ nw.ui = function() {
       return false;
     });
     $('.nav .password').keypress(function(e) {
-      if(e.which == 13) 
-        login();
+      if(e.which == 13) login();
     }); 
   };
 
@@ -107,6 +106,7 @@ nw.ui = function() {
         success: function(json){
           if(json.status == "success") {
             $('#new_user .errors').hide();
+            window.location = json.location
           } else {
             if(json.location) window.location = json.location
             $('#new_user input').removeClass('error');

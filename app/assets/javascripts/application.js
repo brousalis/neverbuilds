@@ -11,6 +11,7 @@ var nw = (function(nw, $) {
   $(function() {
     nw.ui.init();
     nw.race_picker.init();
+    $('html, body').animate({ scrollTop: $('html, body').offset().top}, 0);
   });
   return nw;
 }(nw || {}, jQuery)); 
