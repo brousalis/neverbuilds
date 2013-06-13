@@ -5,12 +5,12 @@ class Build
   embeds_many :comments
 
   field :name,      type: String
-  field :category,  type: String
+  field :type,  type: String
   field :character_class,     type: String
 
   validates_presence_of :user 
   validates_presence_of :name
-  validates_presence_of :category
+  validates_presence_of :type
   validates_presence_of :character_class
   validates_uniqueness_of :name
 
@@ -28,11 +28,11 @@ class Build
     self.comments.collect { |c| [c] + c.comments }.flatten
   end
 
-  def more_from_category
-    Build.find_all_by_category(self.category, :limit => 4, :conditions => ["id != ?", self.id])
+  def more_from_type
+    Build.find_all_by_type(self.type, :limit => 4, :conditions => ["id != ?", self.id])
   end
 
   def self.all_categories
-    Build.select(:category).group(:category).collect { |g| g.category }
+    Build.select(:type).group(:type).collect { |g| g.type}
   end
 end

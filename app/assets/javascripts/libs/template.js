@@ -8,28 +8,49 @@ nw.template = function() {
  
     // the almighty hack of all hacks
     $('body').tooltip({ selector: '[data-toggle=tooltip]' });
+    $('html, body').animate({ scrollTop: $('html, body').offset().top}, 0);
     
     handle_hud();
     handle_powers();
     handle_feats();
-    handle_guide();
+    handle_build();
 
-    $(".nano").nanoScroller();
+    // submit build
+    $('#submit').on('click', function() {
+      $('#new_build').submit();
+      return false;
+    });
+    $('#new_build')
+      .bind('ajax:success', function(evt, data, status, xhr){
+        var resp = $.parseJSON(xhr.responseText);
+        var $this = $(this);
+        $this.find('.errors').hide();
+        window.location = resp['location'];
+      })
+      .bind('ajax:error', function(evt, xhr, status, error){
+        var resp = $.parseJSON(xhr.responseText),
+            errors = $('<ul />');
 
-    $('.submit').on('click', function() {
-      $('form').submit();
+        $.each(resp['errors'], function(){
+          errors.append('<li>' + this + '</li>');
+        })
+
+        $(this).find('.error-list').html(errors);
     });
 
+    // repick
     $('.character').on('click', function() {
       nw.race_picker.show();
     });
 
     // build type (pvp/pve)
     $('fieldset.category a').on('click', function() {
-      $('#build_category').val(this.innerText);
+      $('#build_category').val(this.innerText);                                                                       
     })
 
+    // ocd
     $('.paragon .class').center();
+    $(".nano").nanoScroller();
   };
 
   $.fn.center = function () {
@@ -350,7 +371,7 @@ nw.template = function() {
     _feats--;
   };
   
-  var handle_guide = function() {
+  var handle_build = function() {
     $('.add-video').on('click', function(e) {
       var url = $('.video-url').val();
       if (url.indexOf('youtube') == -1) {
@@ -386,8 +407,9 @@ nw.template = function() {
         return false;
       });
      
-    $('.category .filter').on('click', function() {
-      $('.category .filter').removeClass('active');
+    $('.type .filter').on('click', function() {
+      $('.type .filter').removeClass('active');
+      $('#build_type').val($(this).text());
       $(this).addClass('active');
       return false;
     });

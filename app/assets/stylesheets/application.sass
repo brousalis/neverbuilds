@@ -221,6 +221,34 @@ a
         font-size: 12px
         margin: 0
 
+.alert
+  display: none
+  text-shadow: none
+  +border-radius(8px)
+  padding: 11px 35px 11px 14px
+.alert-error
+  background: #2c0000
+  border: 1px solid #111
+  text-shadow: none
+  p
+    color: #fff
+    font-weight: bold
+    font-size: 17px
+    text-shadow: none
+    i
+      margin-top: 2px
+      margin-right: 4px
+  .close
+    color: #fff
+
+.errors
+  ul
+    margin: 0
+    padding: 0
+    margin-left: 20px
+    li
+      font-size: 16px
+
 .content
   margin: 0px
   background: #0e0e0e
@@ -256,6 +284,16 @@ a
           padding-bottom: 14px
           padding-top: 16px
           padding-left: 13px
+          &.trickster_rogue
+            color: #2e5192  
+          &.devoted_cleric
+            color: #f2de53
+          &.guardian_fighter
+            color: #d99f66
+          &.control_wizard
+            color: #7e62ac
+          &.great_weapon_fighter
+            color: #d04e4b
           &:hover
             background-color: rgba(0, 0, 0, 0.8)
           img
@@ -272,12 +310,16 @@ a
           strong
             font-size: 25px
             line-height: 26px
+            font-weight: lighter
             -webkit-font-smoothing: antialiased !important
             text-shadow: 1px 1px 1px rgba(0,0,0,0.004)
           .meta
             font-size: 15px
             color: rgba(255, 255, 255, 0.5) !important
             display: block
+            margin-top: 3px
+            .class-image
+              margin-top: -3px
             div
               display: inline
               background: #444

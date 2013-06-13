@@ -4,6 +4,12 @@
       .span12.template
         - if session[:class]
           = render :partial => "template", :locals => {:character_class => session[:class], :race => session[:race], :f => f}
+    .errors.alert.alert-error
+      %a.close{:href => "#", "data_dismiss" => "alert"} &times;
+      %p 
+        %i.icon.icon-white.icon-exclamation-sign
+        Please fix the following errors:
+      .error-list
     .row
       .span3.sidebar
         %ul.nav
@@ -13,15 +19,14 @@
               = format_date(Date.today)
           %li.meta
             .left Type
-            .right
-              %fieldset.category
-                = f.hidden_field :category
-                %a.filter{:href => "#"} PVE
-                %a.filter{:href => "#"} PVP 
+            .right.type
+              = f.hidden_field :type
+              %a.filter{:href => "#"} PVE
+              %a.filter{:href => "#"} PVP 
           %li
             %a.btn.preview{:href => "#"} Preview
           %li
-            %a.btn.submit{:href => "#"} Submit
+            %a#submit.btn{:href => "#"} Submit
         %ul.nav.cheats
           %li.intro
             The editor uses <strong>Markdown</strong>, a text-to-HTML tool. Here is a cheat sheet to help you.
@@ -70,3 +75,4 @@
               * List item 2
 
 = render :partial => "picker"
+

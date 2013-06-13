@@ -11,7 +11,6 @@ var nw = (function(nw, $) {
   $(function() {
     nw.ui.init();
     nw.race_picker.init();
-    $('html, body').animate({ scrollTop: $('html, body').offset().top}, 0);
   });
   return nw;
 }(nw || {}, jQuery)); 
@@ -52,16 +51,7 @@ else
             this[hookname] = returnFalse;
         }
     };
-
     Markdown.HookCollection = HookCollection;
-
-    // g_urls and g_titles allow arbitrary user-entered strings as keys. This
-    // caused an exception (and hence stopped the rendering) when the user entered
-    // e.g. [push] or [__proto__]. Adding a prefix to the actual key prevents this
-    // (since no builtin property starts with "s_"). See
-    // http://meta.stackoverflow.com/questions/64655/strange-wmd-bug
-    // (granted, switching from Array() to Object() alone would have left only __proto__
-    // to be a problem)
     function SaveHash() { }
     SaveHash.prototype = {
         set: function (key, value) {
@@ -71,37 +61,16 @@ else
             return this["s_" + key];
         }
     };
-
     Markdown.Converter = function () {
         var pluginHooks = this.hooks = new HookCollection();
         pluginHooks.addNoop("plainLinkText");  // given a URL that was encountered by itself (without markup), should return the link text that's to be given to this link
         pluginHooks.addNoop("preConversion");  // called with the orignal text as given to makeHtml. The result of this plugin hook is the actual markdown source that will be cooked
         pluginHooks.addNoop("postConversion"); // called with the final cooked HTML code. The result of this plugin hook is the actual output of makeHtml
-
-        //
-        // Private state of the converter instance:
-        //
-
-        // Global hashes, used by various utility routines
         var g_urls;
         var g_titles;
         var g_html_blocks;
-
-        // Used to track when we're inside an ordered or unordered list
-        // (see _ProcessListItems() for details):
         var g_list_level;
-
         this.makeHtml = function (text) {
-
-            //
-            // Main function. The order in which other subs are called here is
-            // essential. Link and image substitutions need to happen before
-            // _EscapeSpecialCharsWithinTagAttributes(), so that any *'s or _'s in the <a>
-            // and <img> tags get encoded.
-            //
-
-            // This will only happen if makeHtml on the same converter instance is called from a plugin hook.
-            // Don't do that.
             if (g_urls)
                 throw new Error("Recursive call to converter.makeHtml");
         
@@ -113,10 +82,6 @@ else
 
             text = pluginHooks.preConversion(text);
 
-            // attacklab: Replace ~ with ~T
-            // This lets us use tilde as an escape char to avoid md5 hashes
-            // The choice of character is arbitray; anything that isn't
-            // magic in Markdown will work.
             text = text.replace(/~/g, "~T");
 
             // attacklab: Replace $ with ~D
