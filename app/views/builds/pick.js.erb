@@ -1,8 +1,4 @@
-nw.race_picker.hide();
-
+nw.picker.hide();
 $('.template').html("<%= escape_javascript(render :partial => 'template', :locals => {:character_class => @class, :race => @race}) %>"); 
-
 nw.template.init();
 
-$('#character_class').val("<%= @class %>");
-$('#race').val("<%= @race%>");

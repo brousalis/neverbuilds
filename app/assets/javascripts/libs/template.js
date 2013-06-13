@@ -8,7 +8,8 @@ nw.template = function() {
  
     // the almighty hack of all hacks
     $('body').tooltip({ selector: '[data-toggle=tooltip]' });
-    
+    $('html, body').animate({scrollTop: 0}, "slow");
+
     handle_hud();
     handle_powers();
     handle_feats();
@@ -44,7 +45,7 @@ nw.template = function() {
 
     // repick
     $('.character').on('click', function() {
-      nw.race_picker.show();
+      nw.picker.show();
     });
 
     // build type (pvp/pve)
@@ -55,7 +56,6 @@ nw.template = function() {
     // ocd
     $('.paragon .class').center();
     $('.nano').nanoScroller();
-    $('.close').on('click', function() { return false; });
   };
 
   $.fn.center = function () {
@@ -130,7 +130,7 @@ nw.template = function() {
           type    = $(this).parents('div').attr('class'),
           max     = parseInt($(this).data('points'), 10),
           val     = parseInt(input.val(), 10),
-          race    = $('.character span:first-child').attr('data-race');
+          race    = $('#race').val();
       if(!$(this).parents('li').hasClass('enabled') || val == max) 
         return false;
 
@@ -180,7 +180,7 @@ nw.template = function() {
       var input   = $(this).find('input'),
           type    = $(this).parents('div').attr('class'),
           val     = parseInt(input.val(), 10),
-          race    = $('.character span:first-child').attr('data-race');
+          race    = $('#race').val();
 
       if(!$(this).parents('li').hasClass('enabled') || val <= 0) 
         return false;
@@ -397,17 +397,17 @@ nw.template = function() {
       return false;
     });
    
-    $('.builds .preview')
+    $('.preview')
       .unbind('click')
       .bind('click', function(e) {
         if($(this).attr('class').indexOf('active') >= 0) {
-          $('.builds textarea').show();
-          $('.builds #preview').removeClass('active');
-          $('.builds .preview').removeClass('active');   
+          $('textarea').show();
+          $('#preview').removeClass('active');
+          $('.preview').removeClass('active');   
         } else {
-          $('.builds textarea').hide();
-          $('.builds #preview').addClass('active');
-          $('.builds .preview').addClass('active');  
+          $('textarea').hide();
+          $('#preview').addClass('active');
+          $('.preview').addClass('active');  
         }
         return false;
       });

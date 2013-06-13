@@ -10,7 +10,7 @@
 var nw = (function(nw, $) {
   $(function() {
     nw.ui.init();
-    nw.race_picker.init();
+    nw.picker.init();
     nw.template.init();
   });
   return nw;

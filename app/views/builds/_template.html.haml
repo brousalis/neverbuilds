@@ -6,10 +6,11 @@
         %strong #{current_user.username.humanize}'s 
         #{race.humanize}
         %i.icon.icon-white.icon-pencil
+        = hidden_field_tag 'build[race]', race, :id => 'race'
       %span
         %i.class-image{:class => "#{character_class}"}
         = character_class.titleize
-        = hidden_field_tag 'build[character_class]', '', :id => 'character_class'
+        = hidden_field_tag 'build[character_class]', character_class, :id => 'character_class'
   .hud
     %ul#hud
       %li.at_wills

@@ -1,4 +1,4 @@
-nw.race_picker = function() {
+nw.picker = function() {
   var init = function() {  
     $('#picker').modal({show:     true, 
                         backdrop: 'static', 

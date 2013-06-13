@@ -1,8 +1,8 @@
 .new
   = form_for @build, :remote => true do |f|
     .row
-      .template.span12
-        - if session[:class]
+      .template.span12 
+        - if session[:race]
           = render :partial => "template", :locals => {:character_class => session[:class], :race => session[:race], :f => f}
     .alert.alert-error
       %a.close{:href => "#", "data_dismiss" => "alert"} &times;
