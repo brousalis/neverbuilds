@@ -15,18 +15,23 @@ nw.template = function() {
     handle_build();
 
     // submit build
-    $('#submit').on('click', function() {
-      $('#new_build').submit();
-      return false;
-    });
+    $('#submit')
+      .unbind('click')
+      .on('click', function() {
+        $('#new_build').submit();
+        return false;
+      });
     $('#new_build')
+      .unbind('ajax:success')
       .bind('ajax:success', function(evt, data, status, xhr){
         var resp = $.parseJSON(xhr.responseText);
-        var $this = $(this);
-        $this.find('.errors').hide();
+        $(this).find('.alert').hide();
         window.location = resp['redirect'];
       })
+      .unbind('ajax:error')
       .bind('ajax:error', function(evt, xhr, status, error){
+        $(this).find('.alert').show();
+
         var resp = $.parseJSON(xhr.responseText),
             errors = $('<ul />');
 
@@ -34,7 +39,7 @@ nw.template = function() {
           errors.append('<li>' + this + '</li>');
         })
 
-        $(this).find('.error-list').html(errors);
+        $(this).find('.errors').html(errors);
     });
 
     // repick
@@ -49,7 +54,8 @@ nw.template = function() {
 
     // ocd
     $('.paragon .class').center();
-    $(".nano").nanoScroller();
+    $('.nano').nanoScroller();
+    $('.close').on('click', function() { return false; });
   };
 
   $.fn.center = function () {

@@ -1,15 +1,15 @@
-.builds
+.new
   = form_for @build, :remote => true do |f|
     .row
-      .span12.template
+      .template.span12
         - if session[:class]
           = render :partial => "template", :locals => {:character_class => session[:class], :race => session[:race], :f => f}
-    .errors.alert.alert-error
+    .alert.alert-error
       %a.close{:href => "#", "data_dismiss" => "alert"} &times;
       %p 
         %i.icon.icon-white.icon-exclamation-sign
         Please fix the following errors:
-      .error-list
+      .errors
     .row
       .span3.sidebar
         %ul.nav

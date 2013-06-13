@@ -1,0 +1,207 @@
+// index
+.builds
+  .content
+    .no-builds
+      padding: 4px
+      display: none
+    ul#builds
+      position: relative
+      list-style-type: none
+      margin: 0
+      li
+        clear: both
+        border-bottom: 1px solid #222
+        &:last-child 
+          border-bottom: none
+        .rating 
+          float: right
+          position: relative
+          width: 250px
+          .ajaxful-rating-wrapper
+            position: absolute
+            top: -55px
+            right: 15px
+        a
+          display: block
+          padding-bottom: 14px
+          padding-top: 16px
+          padding-left: 13px
+          &.trickster_rogue
+            color: #2e5192  
+          &.devoted_cleric
+            color: #f2de53
+          &.guardian_fighter
+            color: #d99f66
+          &.control_wizard
+            color: #7e62ac
+          &.great_weapon_fighter
+            color: #d04e4b
+          &:hover
+            background-color: rgba(0, 0, 0, 0.8)
+          img
+            width: 44px
+            height: 44px
+            float: left
+            margin-right: 14px
+            margin-top: 3px
+            border-radius: 4px
+            +box-shadow(0px 1px 5px rgba(0, 0, 0, 0.75))
+            display: block
+          .name 
+            position: relative
+          strong
+            font-size: 25px
+            line-height: 26px
+            font-weight: lighter
+            -webkit-font-smoothing: antialiased !important
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.004)
+          .meta
+            font-size: 15px
+            color: rgba(255, 255, 255, 0.5) !important
+            display: block
+            margin-top: 3px
+            .class-image
+              margin-top: -3px
+            div
+              display: inline
+              background: #444
+              opacity: 0.5
+              padding: 1px 8px
+              border-radius: 6px
+              font-size: 12px
+              margin-left: 5px
+              font-weight: bold
+              color: #fff
+              text-transform: uppercase
+              &.approved
+                color: green !important
+              &.featured
+                color: $lightblue !important 
+            strong
+              font-weight: normal
+              font-size: 15px
+              color: #ccc
+          span
+            font-size: 12px
+            color: #aaa
+            font-style: normal
+            background-color: rgba(0, 0, 0, 0.8)
+            border-radius: 30px
+            padding: 0px 7px
+            text-align: center
+            height: 24px
+            line-height: 25px
+            position: absolute
+            top: 10px
+            left: -11px
+  
+// new build
+.new
+  h2
+    font-weight: 300
+    opacity: 0.3
+    float: right
+    position: absolute
+    right: 20px
+    bottom: 12px
+  .build-name
+    position: relative
+    +border-radius(8px 8px 0px 0px)
+    .btn
+      float: right
+      margin: 10px
+      padding: 4px 6px
+    .youtube
+      z-index: 0
+    .image
+      float: right
+      margin: 10px 2px 10px 10px
+      &.error
+        border: 1px solid red
+      &:focus
+        +box-shadow(none)
+        border: 1px solid #666
+    .name
+      font-size: 36px
+      border: 1px solid #222
+      width: 100%
+      height: 60px
+      font-weight: bold
+      background: #000
+      +box-sizing(border-box)
+      +border-radius(0)
+      +box-shadow(none)
+      color: #fff
+      padding: 10px 12px
+      margin-bottom: 0px
+      position: relative
+      line-height: normal
+      &:focus
+        +box-shadow(none)
+  .video
+    background-color: #f1f1f1
+    height: 50px
+    .btn
+      margin: 10px
+      padding: 4px 6px
+      float: right
+    .add-video
+      margin-right: 3px
+    .remove-video
+      margin-right: 12px
+    input
+      font-size: 14px
+      margin-top: 10px
+      margin-left: 12px
+      width: 83%
+      height: 27px
+      background: #fff
+      padding-left: 10px
+      border: 1px solid #ddd
+      color: #888
+      &:focus
+        +box-shadow(none)
+        border: 1px solid #ddd
+  .body
+    h1 
+      color: #222
+      border-bottom: 1px dotted #ccc
+      margin-top: 0px
+      padding: 5px 0px
+      margin-bottom: 12px
+    p, li
+      font-size: 17px !important
+      line-height: 24px
+      color: #444
+    p
+      margin-bottom: 18px
+    textarea
+      font-size: 1.4em
+      border: none
+      width: 100%
+      line-height: 24px
+      +border-radius(0)
+      +box-sizing(border-box)
+      +box-shadow(none)
+      resize: none !important
+      min-height: 600px
+      padding: 12px
+    #preview
+      min-height: 380px
+      display: none
+      font-size: 1.1em
+      color: #333
+      margin-top: 0px
+      padding: 5px 15px
+      margin-bottom: 15px   
+      &.active
+        display: block !important
+      h1
+        font-size: 24px
+      p
+        font-weight: normal
+        color: #333
+        font-size: 1.4em 
+      a 
+        color: #000
+        text-decoration: underline !important

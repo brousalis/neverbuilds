@@ -1,87 +1,83 @@
-.builds
-  .row
-    .span3.sidebar
-      %ul.nav
-        %li.meta
-          .left Sort by
-          
-        %li.meta
-          .left Type
-          .right
-            %a.filter.active{:href => "#"} All
-            %a.filter{:href => "#"} PVE
-            %a.filter{:href => "#"} PVP
-        %li.search
-          %input.searchbox
-        %li.class-list
-          %div
-            %h1 Classes
-            %ul#classes
-              - classes.each do |c|
-                %li
-                  %a{:href => "#", :rel => "#{c}", :class => "#{underscore(c)}"}= c
+.all.row
+  .sidebar.span3
+    %ul.nav
+      %li.meta
+        .left Type
+        .right
+          %a.filter.active{:href => "#"} All
+          %a.filter{:href => "#"} PVE
+          %a.filter{:href => "#"} PVP
+      %li.search
+        %input.searchbox
+      %li.class-list
+        %div
+          %h1 Classes
+          %ul#classes
+            - classes.each do |c|
               %li
-                %a.all.active{:href => "#"} All
-    .span9.all-builds
-      .header
-        %span.title All Builds
-        %span.ajax 
-      .content
-        .no-builds
-          No builds are found.
-        %ul#builds
-          %li
-            %a{:href => '#', :class => "trickster_rogue", :style => "display: block;"}
-              .name
-                %strong Biggest crits of all time
-              .meta
-                %i.class-image.trickster_rogue
-                by 
-                %strong brous
-                on #{format_date(Date.today)}
-                %div trickster rogue
-                %div pvp 
-          %li
-            %a{:href => '#', :class => "great_weapon_fighter", :style => "display: block;"}
-              .name
-                %strong Biggest crits of all time
-              .meta
-                %i.class-image.great_weapon_fighter
-                by 
-                %strong jemhadar
-                on #{format_date(Date.today)}
-                %div great weapon fighter
-                %div pvp  
-          %li
-            %a{:href => '#', :class => "control_wizard", :style => "display: block;"}
-              .name
-                %strong Biggest crits of all time
-              .meta
-                %i.class-image.control_wizard
-                by 
-                %strong chaos ahreb
-                on #{format_date(Date.today)}
-                %div control wizard
-                %div pvp   
-          %li
-            %a{:href => '#', :class => "devoted_cleric", :style => "display: block;"}
-              .name
-                %strong Biggest crits of all time
-              .meta
-                %i.class-image.devoted_cleric
-                by 
-                %strong brous
-                on #{format_date(Date.today)}
-                %div devoted cleric
-                %div pvp   
-          %li
-            %a{:href => '#', :class => "guardian_fighter", :style => "display: block;"}
-              .name
-                %strong Biggest crits of all time
-              .meta
-                %i.class-image.guardian_fighter
-                by 
-                %strong brous
-                on #{format_date(Date.today)}
-                %div guardian fighter
-                %div pvp   
+                %a{:href => "#", :rel => "#{c}", :class => "#{underscore(c)}"}= c
+            %li
+              %a.all.active{:href => "#"} All
+  .builds.span9
+    .header
+      %span.title All Builds
+      %span.ajax 
+    .content
+      .no-builds
+        No builds are found.
+      %ul#builds
+        %li
+          %a{:href => '#', :class => "trickster_rogue", :style => "display: block;"}
+            .name
+              %strong Biggest crits of all time
+            .meta
+              %i.class-image.trickster_rogue
+              by 
+              %strong brous
+              on #{format_date(Date.today)}
+              %div trickster rogue
+              %div pvp 
+        %li
+          %a{:href => '#', :class => "great_weapon_fighter", :style => "display: block;"}
+            .name
+              %strong Biggest crits of all time
+            .meta
+              %i.class-image.great_weapon_fighter
+              by 
+              %strong jemhadar
+              on #{format_date(Date.today)}
+              %div great weapon fighter
+              %div pvp  
+        %li
+          %a{:href => '#', :class => "control_wizard", :style => "display: block;"}
+            .name
+              %strong Biggest crits of all time
+            .meta
+              %i.class-image.control_wizard
+              by 
+              %strong chaos ahreb
+              on #{format_date(Date.today)}
+              %div control wizard
+              %div pvp   
+        %li
+          %a{:href => '#', :class => "devoted_cleric", :style => "display: block;"}
+            .name
+              %strong Biggest crits of all time
+            .meta
+              %i.class-image.devoted_cleric
+              by 
+              %strong brous
+              on #{format_date(Date.today)}
+              %div devoted cleric
+              %div pvp   
+        %li
+          %a{:href => '#', :class => "guardian_fighter", :style => "display: block;"}
+            .name
+              %strong Biggest crits of all time
+            .meta
+              %i.class-image.guardian_fighter
+              by 
+              %strong brous
+              on #{format_date(Date.today)}
+              %div guardian fighter
+              %div pvp   

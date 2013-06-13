@@ -1,13 +1,12 @@
-.builds.build.row
-  .span9
-    .page
-      .header.no-avatar
-        %h1= @build.name
-      - if @build.video
-        %iframe.youtube{:allowfullscreen => "", :frameborder => "0", :height => "500", :src => "http://www.youtube.com/embed/#{@build.video}", :width => "100%"}
-      - if @build.body != nil
-        .body.show
-          != render_markdown(@build.body)
+.build.row
+  .page.span9
+    .header.no-avatar
+      %h1= @build.name
+    - if @build.video
+      %iframe.youtube{:allowfullscreen => "", :frameborder => "0", :height => "500", :src => "http://www.youtube.com/embed/#{@build.video}", :width => "100%"}
+    - if @build.body != nil
+      .body.show
+        != render_markdown(@build.body)
 
   .sidebar.scroll.span3
     - if current_user && (current_user.username == @build.user.username || current_user.role == "egocentric")
