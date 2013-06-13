@@ -12,7 +12,7 @@ gem 'kaminari'
 gem 'newrelic_rpm'
 
 gem 'mongoid'
-gem 'mongo_mapper'
+gem 'trackoid'
 
 group :development do
   gem 'quiet_assets', '>= 1.0.1'
