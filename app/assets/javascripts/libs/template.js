@@ -25,7 +25,7 @@ nw.template = function() {
         var resp = $.parseJSON(xhr.responseText);
         var $this = $(this);
         $this.find('.errors').hide();
-        window.location = resp['location'];
+        window.location = resp['redirect'];
       })
       .bind('ajax:error', function(evt, xhr, status, error){
         var resp = $.parseJSON(xhr.responseText),
