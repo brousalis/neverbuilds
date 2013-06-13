@@ -1,16 +1,20 @@
 class Build
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   belongs_to :user
   embeds_many :comments
 
-  field :name,      type: String
-  field :type,  type: String
-  field :character_class,     type: String
+  field :name, type: String
+  field :type, type: String
+  field :video, type: String
+  field :body, type: String
+  field :character_class, type: String
 
   validates_presence_of :user 
   validates_presence_of :name
   validates_presence_of :type
+  validates_presence_of :body
   validates_presence_of :character_class
   validates_uniqueness_of :name
 
