@@ -48,156 +48,157 @@
       +border-radius(30px)
       .image
         +border-radius(30px) 
-  .meta
-    .character
-      height: 140px
-      border-bottom: 1px solid #222
-      display: block
-      position: relative
-      overflow: hidden
-      &:hover
-        cursor: pointer
-      &:hover .info span i.icon 
-        display: inline-block
-      .info
-        z-index: 1
-        position: absolute
-        bottom: 12px
-        left: 12px
-        span
-          margin-top: 5px
-          display: block
-          color: #fff
-          text-transform: uppercase
-          font-family: 'proxima-nova-extra-condensed'
-          font-size: 26px 
-          text-shadow: 0px 2px 1px #000
-          i.icon
-            display: none
-            margin-left: 10px
-            margin-top: 8px
-            +opacity(30)
-      .image
-        height: 250px 
-        width: 450px
-        position: absolute
-        top: -25px
-        left: 50px
-        display: block 
-        color: #fff
-        z-index: 0
-        +opacity(50)
-        &.drow 
-          background: image-url('races/drow.png') no-repeat
-          top: -10px
-          width: 345px
-        &.dwarf  
-          background: image-url('races/dwarf.png') no-repeat
-        &.half_elf  
-          background: image-url('races/half_elf.png') no-repeat
-          top: -10px
-        &.halfling  
-          background: image-url('races/halfling.png') no-repeat
-          top: -50px
-        &.human  
-          background: image-url('races/human.png') no-repeat
-        &.tiefling  
-          background: image-url('races/tiefling.png') no-repeat
-        &.wood_elf  
-          background: image-url('races/wood_elf.png') no-repeat 
-          top: -10px
 
-  .hud
-    margin-top: 10px
-    text-align: center
-    .selector
-      display: none
-    #hud
-      padding: 5px
-      margin: 0
-      li
-        display: inline-block
-        margin-right: 30px
-        &:last-child 
-          margin-right: 0
-        .type
-          display: block
-          font-size: 11px
-          font-weight: bold
-          color: #aaa
-          text-transform: uppercase
-          text-align: left
-          line-height: 22px  
-          margin-bottom: 5px
+// character window
+.character
+  height: 140px
+  border-bottom: 1px solid #222
+  display: block
+  position: relative
+  overflow: hidden
+  &:hover
+    cursor: pointer
+  &:hover .info span i.icon 
+    display: inline-block
+  .info
+    z-index: 1
+    position: absolute
+    bottom: 12px
+    left: 12px
+    span
+      margin-top: 5px
+      display: block
+      color: #fff
+      text-transform: uppercase
+      font-family: 'proxima-nova-extra-condensed'
+      font-size: 26px 
+      text-shadow: 0px 2px 1px #000
+      i.icon
+        display: none
+        margin-left: 10px
+        margin-top: 8px
+        +opacity(30)
+  .image
+    height: 250px 
+    width: 450px
+    position: absolute
+    top: -25px
+    left: 50px
+    display: block 
+    color: #fff
+    z-index: 0
+    +opacity(50)
+    &.drow 
+      background: image-url('races/drow.png') no-repeat
+      top: -10px
+      width: 345px
+    &.dwarf  
+      background: image-url('races/dwarf.png') no-repeat
+    &.half_elf  
+      background: image-url('races/half_elf.png') no-repeat
+      top: -10px
+    &.halfling  
+      background: image-url('races/halfling.png') no-repeat
+      top: -50px
+    &.human  
+      background: image-url('races/human.png') no-repeat
+    &.tiefling  
+      background: image-url('races/tiefling.png') no-repeat
+    &.wood_elf  
+      background: image-url('races/wood_elf.png') no-repeat 
+      top: -10px
+
+// hud
+.hud
+  margin-top: 10px
+  text-align: center
+  .selector
+    display: none
+  #hud
+    padding: 5px
+    margin: 0
+    li
+      display: inline-block
+      margin-right: 30px
+      &:last-child 
+        margin-right: 0
+      .type
+        display: block
+        font-size: 11px
+        font-weight: bold
+        color: #aaa
+        text-transform: uppercase
+        text-align: left
+        line-height: 22px  
+        margin-bottom: 5px
+      .button
+        z-index: 10
+        position: relative
+        .image
+          +box-shadow(none)
+        &.active
+          +opacity(100)
+          z-index: 100
+          .change
+            &:before
+              border-left: 3px solid transparent
+              border-right: 3px solid transparent
+              border-bottom: none
+              border-top: 4px solid #888          
+      .popover
+        background: #000
+        +border-radius(0)
+        z-index: 90
+        &.top
+          margin-top: 1px
+        .arrow
+          display: none 
+        .popover-content
+          padding: 10px
         .button
-          z-index: 10
-          position: relative
+          +opacity(80)
           .image
-            +box-shadow(none)
-          &.active
+            +box-shadow(#{inset 0 1px 2px rgba(255,255,255,0.4),inset 0 1px 10px rgba(0,0,0,0.2)})
+            background-size: 100% !important
+          &:hover
             +opacity(100)
-            z-index: 100
-            .change
-              &:before
-                border-left: 3px solid transparent
-                border-right: 3px solid transparent
-                border-bottom: none
-                border-top: 4px solid #888          
+          &.hidden
+            display: none
+      &.at_wills
+        .button.active
+          border: 1px solid $at_wills
+          border-top: 1px solid #000
         .popover
-          background: #000
-          +border-radius(0)
-          z-index: 90
+          border: 1px solid $at_wills
+      &.encounters
+        .button.active
+          border: 1px solid $encounters
+          border-top: 1px solid #000
+        .popover
+          border: 1px solid $encounters
+      &.dailys
+        .button.active
+          border: 1px solid $dailys
+        .popover
+          border: 1px solid $dailys
+          z-index: 1001
           &.top
-            margin-top: 1px
-          .arrow
-            display: none 
-          .popover-content
-            padding: 10px
-          .button
-            +opacity(80)
-            .image
-              +box-shadow(#{inset 0 1px 2px rgba(255,255,255,0.4),inset 0 1px 10px rgba(0,0,0,0.2)})
-              background-size: 100% !important
-            &:hover
-              +opacity(100)
-            &.hidden
-              display: none
-        &.at_wills
-          .button.active
-            border: 1px solid $at_wills
-            border-top: 1px solid #000
-          .popover
-            border: 1px solid $at_wills
-        &.encounters
-          .button.active
-            border: 1px solid $encounters
-            border-top: 1px solid #000
-          .popover
-            border: 1px solid $encounters
-        &.dailys
-          .button.active
-            border: 1px solid $dailys
-          .popover
-            border: 1px solid $dailys
-            z-index: 1001
-            &.top
-              .arrow
-                display: block
-                &:after
-                  border-top-color: $dailys
-        &.skills
-          .button.active
-            border: 1px solid $skills
-            border-top: 1px solid #000
-          .popover
-            border: 1px solid $skills
-  
+            .arrow
+              display: block
+              &:after
+                border-top-color: $dailys
+      &.skills
+        .button.active
+          border: 1px solid $skills
+          border-top: 1px solid #000
+        .popover
+          border: 1px solid $skills
+
 // powers tree
 .powers
   margin: 30px auto
   position: relative
   width: 900px
-  +transition(all 0.3s linear)
   .content
     background: #191919
   &.expanded

@@ -8,7 +8,6 @@ nw.template = function() {
  
     // the almighty hack of all hacks
     $('body').tooltip({ selector: '[data-toggle=tooltip]' });
-    $('html, body').animate({scrollTop: 0}, "slow");
 
     handle_hud();
     handle_powers();

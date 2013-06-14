@@ -207,5 +207,27 @@
         color: #000
         text-decoration: underline !important
 
+
 // show
 .build
+  .hud
+    position: absolute
+    right: 0
+    margin: 0
+    top: 30px
+    .button
+      top: -150px
+      cursor: default
+    ul
+      li
+        position: relative
+        overflow: hidden
+  .template
+    position: relative
+  .character
+    cursor: default
+    &:hover .info span i.icon 
+      display: none
+    .image
+      left: -50px
+      +opacity(30)

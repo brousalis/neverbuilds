@@ -81,6 +81,25 @@ module BuildsHelper
     end 
   end 
 
+  def button_by_name(power, character_class)
+    power = false if power == ""
+    power_hash = class_config(character_class)['powers'][power]
+    image = power ? "url('/assets/powers/#{character_class}/#{power}.png')" : "none"
+    content_tag(:a, 
+                :class => "button", 
+                :href => "#",
+                :title => power ? tooltip(power_hash, character_class) : power,
+                :"data-toggle" => power ? "tooltip" : power,
+                :"data-placement" => "top",
+                :"data-animation" => "false",
+                :"data-html" => "true") do
+      content_tag(:div, 
+                  :class => "image", 
+                  :style => "background: #{image}") do
+      end
+    end
+  end
+
   def hud_button(power, character_class)
     content_tag(:a, 
                 :class => "button", 
@@ -96,7 +115,7 @@ module BuildsHelper
                   :style => "background: url('/assets/powers/#{character_class}/#{power["key"]}.png')") do
       end
     end
-  end
+  end 
 
   def feat_button(feat, character_class)
     content_tag(:a, 

@@ -16,6 +16,20 @@ nw.ui = function() {
     
     // navbar login
     handle_login();
+
+    // slide in on show page
+    slide_buttons();
+  };
+
+  var slide_buttons = function() {
+    $('.build .hud .button').each(function(i) {
+      $(this).delay((i + 1) * 80).animate({top: "0px"}, 300);
+    });
+    $('.build .character').animate({opacity: "1"}, 600);
+  };
+
+  var scroll_top = function() {
+    $('html, body').animate({scrollTop: 0}, "slow");
   };
 
   var handle_login = function() {
@@ -127,7 +141,8 @@ nw.ui = function() {
   };
 
   return {
-    init: init
+    init: init,
+    scroll_top: scroll_top
   };
 }();
 

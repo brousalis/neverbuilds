@@ -1,76 +1,75 @@
-.meta
-  .character
-    %span.image{:class => "#{race}", :"data-race" => "#{race}"}
-    .info
-      %span 
-        %strong #{current_user.username.humanize}'s 
-        #{race.humanize}
-        %i.icon.icon-white.icon-pencil
-        = hidden_field_tag 'build[race]', race, :id => 'race'
-      %span
-        %i.class-image{:class => "#{character_class}"}
-        = character_class.titleize
-        = hidden_field_tag 'build[character_class]', character_class, :id => 'character_class'
-  .hud
-    %ul#hud
-      %li.at_wills
-        %span.type at wills
-        %a.button.at_will{:href => '#', :rel => 'at_will'}
-          %span.change
-          %span.image
-          = hidden_field_tag 'build[hud][at_will1]'
-        %a.button.at_will{:href => '#', :rel => 'at_will'}
-          %span.change
-          %span.image
-          = hidden_field_tag 'build[hud][at_will2]'
-      %li.encounters
-        %span.type encounters
-        %a.button.encounter{:href => '#', :rel => 'encounter', :"data-toggle" => "tooltip", :"data-html" => "true", :"data-button" => "right"}
-          %span.change
-          %span.image
-          = hidden_field_tag 'build[hud][encounter1]'
-        %a.button.encounter{:href => '#', :rel => 'encounter'}
-          %span.change
-          %span.image
-          = hidden_field_tag 'build[hud][encounter2]'
-        %a.button.encounter{:href => '#', :rel => 'encounter'}
-          %span.change
-          %span.image
-          = hidden_field_tag 'build[hud][encounter3]'
-      %li.dailys
-        %span.type dailys
-        %a.button.daily{:href => '#', :rel => 'daily'}
-          %span.image
-          = hidden_field_tag 'build[hud][daily1]'
-        %a.button.daily{:href => '#', :rel => 'daily'}
-          %span.image
-          = hidden_field_tag 'build[hud][daily2]'
-      %li.skills
-        %span.type class features
-        %a.button.skill{:href => '#', :rel => 'skill'}
-          %span.change
-          %span.image
-          = hidden_field_tag 'build[hud][skill1]'
-        %a.button.skill{:href => '#', :rel => 'skill'}
-          %span.change
-          %span.image
-          = hidden_field_tag 'build[hud][skill2]'
+.character
+  %span.image{:class => "#{race}", :"data-race" => "#{race}"}
+  .info
+    %span 
+      %strong #{current_user.username.humanize}'s 
+      #{race.humanize}
+      %i.icon.icon-white.icon-pencil
+      = hidden_field_tag 'build[race]', race, :id => 'race'
+    %span
+      %i.class-image{:class => "#{character_class}"}
+      = character_class.titleize
+      = hidden_field_tag 'build[character_class]', character_class, :id => 'character_class'
+.hud
+  %ul#hud
+    %li.at_wills
+      %span.type at wills
+      %a.button.at_will{:href => '#', :rel => 'at_will'}
+        %span.change
+        %span.image
+        = hidden_field_tag 'build[hud][at_will1]'
+      %a.button.at_will{:href => '#', :rel => 'at_will'}
+        %span.change
+        %span.image
+        = hidden_field_tag 'build[hud][at_will2]'
+    %li.encounters
+      %span.type encounters
+      %a.button.encounter{:href => '#', :rel => 'encounter', :"data-toggle" => "tooltip", :"data-html" => "true", :"data-button" => "right"}
+        %span.change
+        %span.image
+        = hidden_field_tag 'build[hud][encounter1]'
+      %a.button.encounter{:href => '#', :rel => 'encounter'}
+        %span.change
+        %span.image
+        = hidden_field_tag 'build[hud][encounter2]'
+      %a.button.encounter{:href => '#', :rel => 'encounter'}
+        %span.change
+        %span.image
+        = hidden_field_tag 'build[hud][encounter3]'
+    %li.dailys
+      %span.type dailys
+      %a.button.daily{:href => '#', :rel => 'daily'}
+        %span.image
+        = hidden_field_tag 'build[hud][daily1]'
+      %a.button.daily{:href => '#', :rel => 'daily'}
+        %span.image
+        = hidden_field_tag 'build[hud][daily2]'
+    %li.skills
+      %span.type class features
+      %a.button.skill{:href => '#', :rel => 'skill'}
+        %span.change
+        %span.image
+        = hidden_field_tag 'build[hud][skill1]'
+      %a.button.skill{:href => '#', :rel => 'skill'}
+        %span.change
+        %span.image
+        = hidden_field_tag 'build[hud][skill2]'
 
-    .selector{:"data-button" => "at_will"}
-      - at_wills(character_class).each do |power|
-        = hud_button(power, character_class)
+  .selector{:"data-button" => "at_will"}
+    - at_wills(character_class).each do |power|
+      = hud_button(power, character_class)
 
-    .selector{:"data-button" => "encounter"}
-      - encounters(character_class).each do |power|
-        = hud_button(power, character_class)
+  .selector{:"data-button" => "encounter"}
+    - encounters(character_class).each do |power|
+      = hud_button(power, character_class)
 
-    .selector{:"data-button" => "daily"}
-      - dailys(character_class).each do |power|
-        = hud_button(power, character_class)
+  .selector{:"data-button" => "daily"}
+    - dailys(character_class).each do |power|
+      = hud_button(power, character_class)
 
-    .selector{:"data-button" => "skill"}
-      - skills(character_class).each do |power|
-        = hud_button(power, character_class)
+  .selector{:"data-button" => "skill"}
+    - skills(character_class).each do |power|
+      = hud_button(power, character_class)
 
 .powers
   .header

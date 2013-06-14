@@ -1,24 +1,96 @@
-.build.row
-  .page.span9
-    .header.no-avatar
-      %h1= @build.name
-    - if @build.video
-      %iframe.youtube{:allowfullscreen => "", :frameborder => "0", :height => "500", :src => "http://www.youtube.com/embed/#{@build.video}", :width => "100%"}
-    - if @build.body != nil
-      .body.show
-        != render_markdown(@build.body)
-  .sidebar.scroll.span3
-    %ul.nav
-      %li.top
-      %li.meta
-        .left By
-        .right
-          %a{:href => "#"}
-            = @build.user.username
-      %li.meta
-        .left Date
-        .right
-      %li.meta
-        .left Type
-        .right
-          = @build.type.capitalize
+.build
+  .row
+    .template.span12
+      .character
+        %span.image{:class => "#{@build.race}", :"data-race" => "#{@build.race}"}
+        .info
+          %span 
+            %strong #{@build.user.username.humanize}'s 
+            #{@build.race.humanize}
+            %i.icon.icon-white.icon-pencil
+          %span
+            %i.class-image{:class => "#{@build.character_class}"}
+            = @build.character_class.titleize
+      .hud
+        %ul#hud
+          %li.at_wills
+            %span.type at wills
+            = button_by_name(@build.hud["at_will1"], @build.character_class)
+            = button_by_name(@build.hud["at_will2"], @build.character_class)
+          %li.encounters
+            %span.type encounters
+            = button_by_name(@build.hud["encounter1"], @build.character_class)
+            = button_by_name(@build.hud["encounter2"], @build.character_class)
+            = button_by_name(@build.hud["encounter3"], @build.character_class)
+          %li.dailys
+            %span.type dailys
+            = button_by_name(@build.hud["daily1"], @build.character_class)
+            = button_by_name(@build.hud["daily2"], @build.character_class)
+          %li.skills
+            %span.type class features
+            = button_by_name(@build.hud["skill1"], @build.character_class)
+            = button_by_name(@build.hud["skill2"], @build.character_class)
+      .powers
+        .header
+          %span.title Powers
+          .toolbox
+            %a.tool.expand{:href => "#"}
+        .content.tree
+          .left-pane.nano
+            .racial
+            .content
+              
+          .right-pane
+            .details
+
+      .feats
+        .header
+          %span.title Feats
+          .toolbox
+            %a.tool.reset{:href => "#"}
+        .content
+          .paragon
+            %span.image{:class => "image-#{@build.character_class}"}
+            %span.class
+              = @build.character_class.titleize
+              &dash;
+              = paragon(@build.character_class)
+          .meta
+            %span.points
+              %em
+              points spent
+            %span.level
+              Level
+              %em 10
+              Build 
+            - if @build.race == 'human'
+              %span.human
+                %em 
+                  +3 
+                additional heroic points 
+          .feat-list
+
+  .row
+    .page.span9
+      .header.no-avatar
+        %h1= @build.name
+      - if @build.video
+        %iframe.youtube{:allowfullscreen => "", :frameborder => "0", :height => "500", :src => "http://www.youtube.com/embed/#{@build.video}", :width => "100%"}
+      - if @build.body != nil
+        .body.show
+          != render_markdown(@build.body)
+    .sidebar.span3
+      %ul.nav
+        %li.top
+        %li.meta
+          .left By
+          .right
+            %a{:href => "#"}
+              = @build.user.username
+        %li.meta
+          .left Date
+          .right
+        %li.meta
+          .left Type
+          .right
+            = @build.type.capitalize

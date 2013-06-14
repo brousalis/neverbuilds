@@ -11,7 +11,6 @@ var nw = (function(nw, $) {
   $(function() {
     nw.ui.init();
     nw.picker.init();
-    nw.template.init();
   });
   return nw;
 }(nw || {}, jQuery)); 
