@@ -7,11 +7,11 @@ gem 'rdiscount'
 gem "therubyracer"
 gem "haml", ">= 3.0.0"
 gem "bcrypt-ruby", :require => "bcrypt"
-gem 'opinio'
 gem 'kaminari'
 gem 'newrelic_rpm'
 
 gem 'mongoid'
+gem 'mongo_mapper'
 gem 'trackoid'
 
 group :development do

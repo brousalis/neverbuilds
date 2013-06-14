@@ -77,7 +77,7 @@ module BuildsHelper
         content_tag(:span, "", :class => "rank") +
         content_tag(:span, "", :class => "rank")
       end +
-      content_tag(:input, "", :name => power["key"], :type => "hidden", :value => "0")
+      content_tag(:input, "", :name => "build[powers][#{power["key"]}]", :type => "hidden", :value => "0")
     end 
   end 
 
@@ -135,7 +135,7 @@ module BuildsHelper
         content_tag(:strong, "0/") +
         content_tag(:em, "#{feat["points"]}")
       end +
-      content_tag(:input, "", :name => feat["key"], :type => "hidden", :value => "0")
+      content_tag(:input, "", :name => "build[feats][#{feat["key"]}]", :type => "hidden", :value => "0")
     end
   end 
 

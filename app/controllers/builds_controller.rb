@@ -1,13 +1,9 @@
 class BuildsController < ApplicationController
-  include Opinio::Controllers::Helpers
-
   before_filter :authorize, :only => [:create, :update, :new, :delete]
 
   def index
     @builds   = Build.where(:order => "created_at DESC").all
     @featured = Build.where(:type => "featured").limit(5)
-    session[:class] = "trickster_rogue"
-    session[:race] = "human"
   end 
 
   def destroy
@@ -23,18 +19,19 @@ class BuildsController < ApplicationController
 
   def show
     @build = Build.find(params[:id])
+    @feats = Marshal.load(@build.feats)
+    @powers = Marshal.load(@build.powers)
   end
 
   def new
-    @build = Build.new((params[:build] || {}).merge(
-      :character_class => session[:class]
-      # TODO: race
-    ))
+    @build = Build.new(params["build"] || {})
   end
 
   def create
-    @build = Build.new(params[:build])
+    @build = Build.new(params["build"])
     @build.user = current_user
+    @build.feats = Marshal.dump(params["build"]["feats"])
+    @build.powers = Marshal.dump(params["build"]["powers"])
     if @build.save
       render :json => {"status" => "success", 
                        "redirect" => "/builds/#{@build.id}"}
@@ -48,9 +45,6 @@ class BuildsController < ApplicationController
   def pick
     @race = params[:race]
     @class = params[:class]
-
-    session[:race] = @race
-    session[:class] = @class
 
     respond_to do |format|
       format.js

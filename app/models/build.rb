@@ -10,6 +10,8 @@ class Build
   field :race, type: String
   field :video, type: String
   field :body, type: String
+  field :feats, type: String
+  field :powers, type: String
   field :character_class, type: String
 
   validates_presence_of :user 

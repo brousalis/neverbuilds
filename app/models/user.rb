@@ -17,7 +17,6 @@ class User
   validates_uniqueness_of :username
 
   has_many :builds
-  #has_many :comments
 
   def authenticate(username, password)
     user = User.find_by(username: username)
@@ -26,10 +25,6 @@ class User
     else
       nil
     end
-  end
-
-  def builds_count
-    attributes['builds_count']
   end
   
   def encrypt_password
