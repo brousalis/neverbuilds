@@ -223,6 +223,11 @@
         overflow: hidden
   .template
     position: relative
+    .tree .button
+      cursor: default
+      +opacity(20)
+      &.enabled
+        +opacity(100)
   .character
     cursor: default
     &:hover .info span i.icon 
@@ -230,3 +235,6 @@
     .image
       left: -50px
       +opacity(30)
+  .feats .content .meta
+    display: none
+

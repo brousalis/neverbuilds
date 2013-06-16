@@ -9,6 +9,7 @@
     %script{:src => "http://use.typekit.com/lvi4fxm.js", :type => "text/javascript"}
     :javascript
       try{Typekit.load();}catch(e){} 
+    = javascript_include_tag "application"
     = stylesheet_link_tag "application"
     = csrf_meta_tag
   %body
@@ -23,7 +24,6 @@
 
     = render :partial => "layouts/register" unless current_user
 
-    = javascript_include_tag "application"
     :javascript
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-9821208-4']);

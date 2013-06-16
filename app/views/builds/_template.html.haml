@@ -88,7 +88,7 @@
           %span.divider Level #{level}
           .buttons
             - powers.each do |power|
-              = tree_button(power, character_class)
+              = power_button(power, character_class)
     .right-pane
       .details
 
@@ -120,7 +120,6 @@
     .feat-list
       - feat_tree(character_class) do |sect, feats|
         %div{:class => sect}
-          %input{:name => "build[feats][sect_#{sect}]", :type => "hidden", :value => "#{sect}"}
           %ul
             - feats.each_slice(sect == 'heroic' ? 3 : 2) do |buttons|
               %li

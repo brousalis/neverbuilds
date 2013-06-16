@@ -55,7 +55,7 @@ module BuildsHelper
     end 
   end
 
-  def tree_button(power, character_class)
+  def power_button(power, character_class)
     placement = (power["level"] == 0 ? "bottom" : "top")
 
     content_tag(:a, 

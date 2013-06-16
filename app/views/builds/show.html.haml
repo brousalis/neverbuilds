@@ -39,15 +39,17 @@
           .left-pane.nano
             .racial
             .content
-              = @powers  
+              - power_tree(@build.character_class) do |level, powers|
+                %span.divider Level #{level}
+                .buttons
+                  - powers.each do |power|
+                    = power_button(power, @build.character_class) 
           .right-pane
             .details
 
       .feats
         .header
           %span.title Feats
-          .toolbox
-            %a.tool.reset{:href => "#"}
         .content
           .paragon
             %span.image{:class => "image-#{@build.character_class}"}
@@ -69,7 +71,14 @@
                   +3 
                 additional heroic points 
           .feat-list
-            = @feats
+            - feat_tree(@build.character_class) do |sect, feats|
+              %div{:class => sect}
+                %ul
+                  - feats.each_slice(sect == 'heroic' ? 3 : 2) do |buttons|
+                    %li
+                      - buttons.each do |feat|
+                        = feat_button(feat, @build.character_class)
+                  %li.sect= sect
 
   .row
     .page.span9
@@ -95,3 +104,6 @@
           .left Type
           .right
             = @build.type.capitalize
+
+:javascript
+  nw.show.init('#{@feats.to_json}', '#{@powers.to_json}');
