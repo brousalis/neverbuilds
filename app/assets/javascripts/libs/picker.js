@@ -3,7 +3,6 @@ nw.picker = function() {
     $('#picker').modal({show:     true, 
                         backdrop: 'static', 
                         keyboard: false});
-
     // choose a race
     $('.race-picker a').on('click', function() {
       $('#race').val($(this).attr('rel'));
@@ -42,17 +41,22 @@ nw.picker = function() {
   };
 
   var show = function() {
-   $('#picker').modal('show');
+    $('#picker').modal('show');
   };
 
   var hide = function() {
-   $('#picker').modal('hide');
+    $('#picker').modal('hide');
   }; 
+
+  var enable_close = function() {
+    $('#picker .close').show();
+  };
 
   return {
     init: init,
     show: show,
-    hide: hide
+    hide: hide,
+    enable_close: enable_close
   };
 }();
  

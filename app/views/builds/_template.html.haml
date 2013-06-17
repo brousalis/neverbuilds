@@ -76,7 +76,7 @@
     %span.title Powers
     %span.count 
       %span
-      points left
+      points spent
     .toolbox
       %a.tool.reset{:href => "#"}
       %a.tool.expand{:href => "#"}
@@ -85,8 +85,8 @@
       .racial
       .content
         - power_tree(character_class) do |level, powers|
-          %span.divider Level #{level}
-          .buttons
+          .buttons{:class => "level_#{level}"}
+            %span.divider Level #{level}
             - powers.each do |power|
               = power_button(power, character_class)
     .right-pane

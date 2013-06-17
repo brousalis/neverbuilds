@@ -83,7 +83,7 @@
     width: 450px
     position: absolute
     top: -25px
-    left: 50px
+    left: 30px
     display: block 
     color: #fff
     z-index: 0
@@ -310,25 +310,29 @@
         margin-left: 4px
         .buttons
           +clearfix
-        .divider
-          +clearfix
-          text-align: center
-          width: 100%
-          margin: 10px 0px
-          font-size: 11px
-          font-weight: bold
-          text-transform: uppercase
-          color: #fff
-          padding: 5px 0px
-          line-height: 0.5
-          position: relative
-          display: table
-          white-space: nowrap
-          &:before, &:after
-            display: table-cell
-            content: ""
-            border-top: 1px solid #222
-            width: 45%
+          &:not(.level_0)
+            +opacity(20)
+          &.on
+            +opacity(100)
+          .divider
+            +clearfix
+            text-align: center
+            width: 100%
+            margin: 10px 0px
+            font-size: 11px
+            font-weight: bold
+            text-transform: uppercase
+            color: #fff
+            padding: 5px 0px
+            line-height: 0.5
+            position: relative
+            display: table
+            white-space: nowrap
+            &:before, &:after
+              display: table-cell
+              content: ""
+              border-top: 1px solid #222
+              width: 45%
     .right-pane
       float: left
       width: 239px

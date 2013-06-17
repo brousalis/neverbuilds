@@ -3,9 +3,10 @@ nw.show = function() {
     feats = JSON.parse(feats);
     powers = JSON.parse(powers);
 
+    // tooltip hacks win all the moneys
     $('body').tooltip({ selector: '[data-toggle=tooltip]' });
 
-    //feats
+    // feats
     $.each(feats, function(k,v) {
       var button = $('[rel='+k+']'),
           value = button.find('strong');
@@ -37,33 +38,32 @@ nw.show = function() {
     });     
 
     // power mouse over
-    $('.tree .button').on('click', function() {
-      return false;
-    });
-    $('.tree .button').on('mouseenter', function(){
-      if($('.details .icon').length > -1)
-        $('.details .icon').remove();
+    $('.tree .button')
+      .on('click', function() { return false; })
+      .on('mouseenter', function(){
+        if($('.details .icon').length > -1)
+          $('.details .icon').remove();
 
-      var data = $(this).data('originalTitle');
+        var data = $(this).data('originalTitle');
 
-      if(data === undefined || data === null)
-        data = $(this).attr('title');
+        if(data === undefined || data === null)
+          data = $(this).attr('title');
 
-      $('.details').html(data);
+        $('.details').html(data);
 
-      $('<div/>', {
-        class: 'icon',
-        style: 'background: '+$(this).find('.image').css('background'),
-      }).prependTo('.details');
+        $('<div/>', {
+          class: 'icon',
+          style: 'background: '+$(this).find('.image').css('background'),
+        }).prependTo('.details');
 
-      var rank = $(this).find('input'),
-          val = parseInt(rank.val(), 10);
+        var rank = $(this).find('input'),
+            val = parseInt(rank.val(), 10);
 
-      switch(val) {
-        case 1: $('.details .desc').addClass('on'); break; 
-        case 2: $('.details .desc, .details .rank_2').addClass('on'); break;
-        case 3: $('.details .desc, .details .rank_2, .details .rank_3').addClass('on'); break;
-      } 
+        switch(val) {
+          case 1: $('.details .desc').addClass('on'); break; 
+          case 2: $('.details .desc, .details .rank_2').addClass('on'); break;
+          case 3: $('.details .desc, .details .rank_2, .details .rank_3').addClass('on'); break;
+        } 
     });
 
     // ocd
