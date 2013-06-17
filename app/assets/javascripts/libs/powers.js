@@ -36,7 +36,6 @@ nw.powers = function() {
         rank  = parseInt(input.val(), 10);
  
     if(!$(this).parent().hasClass('on')) return false;
-
     switch(rank) {
       case 0:
         $(this).find('.rank:lt(1)').addClass('on');
@@ -60,11 +59,16 @@ nw.powers = function() {
         $placed++;
         break;
     }
-
-    if($placed != 25 && $placed <= 55 && $placed % 5 == 0)
-      $(this).parent().parent().find('.buttons:not(.on)').first().addClass('on');
   
     update_count($placed);
+
+    if(rank + 1 == 3) return false;
+
+    console.log('=== ' + $placed + ' | ' + rank)
+    if($placed != 25 && $placed <= 55 && $placed % 5 == 0) {
+      console.log('huh')
+      $(this).parent().parent().find('.buttons:not(.on)').first().addClass('on');
+    }
 
     return false; 
   };
@@ -79,9 +83,8 @@ nw.powers = function() {
 
     if(rank == 0) return false;
     
-    if($placed != 55 && $placed % 5 == 0) {
+    if($placed <= 50 && $placed % 5 == 0)
       $(this).parent().parent().find('.on').last().removeClass('on');
-    }
  
     // check if safe to remove point
     if(($placed - 1) == parseInt(last_level,10) && 
