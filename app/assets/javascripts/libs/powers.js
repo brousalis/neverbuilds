@@ -76,10 +76,10 @@ nw.powers = function() {
   var right_click = function(event) {
     if($placed == 0) return false;
     
-    var last_level = $('.ranked').last().parent().parent().attr('class').replace('buttons','').replace('on','').replace('level_',''),
-        this_level = $(this).parent().attr('class').replace('buttons','').replace('on','').replace('level_',''),
-        input = $(this).find('input'),
-        rank  = parseInt(input.val(), 10);
+    var last_level  = $('.ranked').last().parent().parent().attr('class').replace('buttons','').replace('on','').replace('level_',''),
+        this_level  = $(this).parent().attr('class').replace('buttons','').replace('on','').replace('level_',''),
+        input       = $(this).find('input'),
+        rank        = parseInt(input.val(), 10);
 
     if(rank == 0) return false;
     
@@ -89,6 +89,7 @@ nw.powers = function() {
     // check if safe to remove point
     if(($placed - 1) == parseInt(last_level,10) && 
        ($placed - 1) != 5 &&
+       ($placed - 1) != 25 &&
        parseInt(last_level,10) != parseInt(this_level,10)) {
       return false;
     }
